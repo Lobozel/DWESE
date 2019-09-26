@@ -224,6 +224,18 @@
         */
     echo "<br>".PHP_EOL;
 
+    echo "<table align='center' border=2>".PHP_EOL;
+            for($i=0;$i<10;$i++){
+                echo "<tr align='center'>".PHP_EOL;
+                for($j=0;$j<10;$j++){
+                    $color=sprintf('#%06X', mt_rand(0, 0xFFFFFF));;
+                    
+                    echo "<td bgcolor=$color align='center'>Celda [$i,$j]</td>".PHP_EOL;  
+                }
+                echo "</tr>".PHP_EOL;
+            }
+            echo "</table>";
+
     ?>
     </div>
 
