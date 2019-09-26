@@ -10,7 +10,9 @@
     <div class='container mt-4'>
     <h3 class='text-center'>Ejercicio1</h3>
     <?php
-        //Ejercicio1
+        /*Ejercicio1
+        Hacer un ejercicio php que me muestre centrada la siguiente tabla: $num=3
+        */
         $numero=3;
         echo "<table align='center' border='3' cellpadding='2' cellspacing='4'".PHP_EOL;
 
@@ -42,7 +44,10 @@
     <div class='container mt-4'>
     <h3 class='text-center'>Ejercicio2</h3>
     <?php
-        //Ejercicio2
+        /*Ejercicio2
+        Hacer un ejercicio en php (primo.php) que dado un número pasado por url “primo.php?num=xx”
+        me diga si es primo o no. Controlaremos si no pasamos el número
+        */
         if(isset($_GET['primo'])){
             //nos ha llegado primo por get
             if(is_nan($_GET['primo'])){
@@ -84,7 +89,10 @@
     <div class='container mt-4'>
     <h3 class='text-center'>Ejercicio3</h3>
     <?php
-        //Ejercicio3
+        /*Ejercicio3
+        Hacer un ejercicio que dado un número menor que 500 me de esa cantidad de números primos,
+        por ejemplo si paso el numero 10 doy los 10 primero primos: 1, 2, 3, 5, 7, 9, 11, 13, 17, 19
+        */
         $cantidad=123;
         $contDiv=0;
         $contPrimo=0;
@@ -99,49 +107,116 @@
                 $contPrimo++;
             }
             $contDiv=0;
-        }
+        }        
     ?>
     </div>
 
     <div class='container mt-4'>
     <h3 class='text-center'>Ejercicio4</h3>
     <?php
-        //Ejercicio4
+        /*Ejercicio4
+        Hacer un ejercicio que dado un número mayor que 1000 me de todos los números primos menores que él dado.
+        */
+        echo "<br>".PHP_EOL;
+        $cantidad=1023;
+        $contDiv=0;
+        for($cont=2;$cont<$cantidad;$cont++){
+            for($i=2;$i<$cont && $contDiv==0;$i++){
+                if($cont%$i==0){
+                    $contDiv++;
+                }
+            }
+            if($contDiv==0){
+                echo "$cont, ";
+            }else{
+                $contDiv=0;
+            }
+        }
     ?>
     </div>
 
     <div class='container mt-4'>
     <h3 class='text-center'>Ejercicio5</h3>
     <?php
-        //Ejercicio5
+        /*Ejercicio5
+        Hacer un ejercicio que dado un número entero mayor que 1000 me de su descomposición en base 10.
+        Ejemplo si num=4567 daremos => 4*10³+5*10²+6*10+7
+        */
+        echo "<br>".PHP_EOL;
+        $num=4567;
+
+        echo "Descomposición del número $num en base 10:<br>".PHP_EOL;
+        
+        for($i=strlen($num);$i>0;$i--){
+            echo (int)($num%pow(10,$i)/pow(10,$i-1));
+            //Este if es solo para formatear el resultado y que se vea bonito
+            if($i>1){
+                echo "*10";
+                if($i>2){
+                    echo "^".($i-1);
+                }
+                echo " + ";
+            }
+        }        
+        
     ?>
     </div>
 
     <div class='container mt-4'>
     <h3 class='text-center'>Ejercicio6</h3>
     <?php
-        //Ejercicio6
+        /*Ejercicio6
+        Hacer un ejercicio que dados dos números separados por mas de 100 unidades me de todos
+        los múltiplos de 3 que hay entre el primero y el segundo, ambos incluidos y además me los cuente
+        */
+        echo "<br>".PHP_EOL;
     ?>
     </div>
 
     <div class='container mt-4'>
     <h3 class='text-center'>Ejercicio7</h3>
     <?php
-        //Ejercicio7
+        /*Ejercicio7
+        Hacer un ejercicio que dado un número me cuente todos sus divisores,
+        Ejemplo si el número es 4me mostrará 1, 2 y 4. 4 tiene 3 divisores
+        */
+
     ?>
     </div>
 
     <div class='container mt-4'>
     <h3 class='text-center'>Ejercicio8</h3>
     <?php
-        //Ejercicio8
+        /*Ejercicio8
+        Hacer un programa que me muestre una tabla html de 10 filas y 10 columnas y
+        cada celda de un color diferente. Pista si ponemos el color en hexadecimal bgcolor=’#123456’
+        cambiando los números obtenemos colores diferentes.
+        */
+
     ?>
     </div>
 
     <div class='container mt-4'>
     <h3 class='text-center'>Ejercicio9</h3>
     <?php
-        //Ejercicio9
+        /*Ejercicio9
+        Una ecuación de segundo grado es de la forma aX² + bX + c = 0 donde a, b, c son números reales y a!=0.
+        Una ecuación de este tipo puede tener 2, 1, o 0 soluciones.
+        La formula que me da la/s solucione/s es : [Imagen en el PDF]
+
+        b²-4ac Es el discriminante, lógicamente si es menor que cero la ecuación no tiene solución
+        (NO existe la raíz cuadrada real de un número negativo) y si es cero la ecuación tendrá una única solución.
+
+        Haremos un programa en php donde daremos a, b, c y en función de estos valores.
+        Calcularemos la/s soluciones/s de la ecuación de segundo grado resultanteLa función que
+        calcula la raíz cuadrada en php es sqrt()
+        La salida será como:
+            La soluciones son 4 y 3 ó
+            La solución es 2 ó
+            No tiene solución
+        Dependiendo del caso
+        */
+
     ?>
     </div>
 
