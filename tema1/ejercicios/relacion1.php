@@ -170,6 +170,21 @@
         los múltiplos de 3 que hay entre el primero y el segundo, ambos incluidos y además me los cuente
         */
         echo "<br>".PHP_EOL;
+
+        $num1=99;
+        $num2=266;
+        
+        $cantMultiDe3=0;
+
+        for($cont=min($num1,$num2);$cont<=max($num1,$num2);$cont++){
+            if($cont%3==0){
+                echo $cont.", ";
+                $cantMultiDe3++;
+            }
+        }
+
+        echo "<br>".PHP_EOL;
+        echo "Entre el ".min($num1,$num2)." y el ".max($num1,$num2)." existen $cantMultiDe3 múltiplos de 3".PHP_EOL;
     ?>
     </div>
 
@@ -180,6 +195,7 @@
         Hacer un ejercicio que dado un número me cuente todos sus divisores,
         Ejemplo si el número es 4me mostrará 1, 2 y 4. 4 tiene 3 divisores
         */
+        echo "<br>".PHP_EOL;
 
     ?>
     </div>
@@ -192,6 +208,7 @@
         cada celda de un color diferente. Pista si ponemos el color en hexadecimal bgcolor=’#123456’
         cambiando los números obtenemos colores diferentes.
         */
+    echo "<br>".PHP_EOL;
 
     ?>
     </div>
@@ -216,6 +233,7 @@
             No tiene solución
         Dependiendo del caso
         */
+        echo "<br>".PHP_EOL;
 
     ?>
     </div>
