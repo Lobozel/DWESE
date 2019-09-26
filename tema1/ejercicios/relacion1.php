@@ -261,6 +261,29 @@
         */
         echo "<br>".PHP_EOL;
 
+        $a=rand(0,200);
+        $b=rand(0,200);
+        $c=rand(0,200);
+
+        $discriminante=(($b*$b)-(4*($a*$c)));
+
+        if($a==0){
+            echo "La ecuación no es cuadrática porque a = 0.".PHP_EOL;
+        }else if($discriminante<0){
+            echo "La ecuación no tiene soluciones reales.".PHP_EOL;
+        }else if($discriminante==0){
+            echo "La ecuación solo tiene una solución real:".PHP_EOL;
+            echo "<br>".PHP_EOL;
+            echo ((-$b)/(2*$a)).PHP_EOL;
+        }else{
+            echo "La ecuación tiene dos soluciones reales:".PHP_EOL;
+            echo "<br>".PHP_EOL;
+            echo "PRIMERA SOLUCIÓN: ".((+$b)+sqrt($discriminante)/(2*$a)).PHP_EOL;
+            echo "<br>".PHP_EOL;
+            echo "SEGUNDA SOLUCIÓN: ".((-$b)-sqrt($discriminante)/(2*$a)).PHP_EOL;
+        }
+
+        echo "<br><br><br>".PHP_EOL;
     ?>
     </div>
 
