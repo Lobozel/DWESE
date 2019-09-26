@@ -183,7 +183,7 @@
             }
         }
 
-        echo "<br>".PHP_EOL;
+        echo "<br><br>".PHP_EOL;
         echo "Entre el ".min($num1,$num2)." y el ".max($num1,$num2)." existen $cantMultiDe3 múltiplos de 3".PHP_EOL;
     ?>
     </div>
@@ -196,6 +196,20 @@
         Ejemplo si el número es 4me mostrará 1, 2 y 4. 4 tiene 3 divisores
         */
         echo "<br>".PHP_EOL;
+
+        $num=56;
+
+        $contMulti=0;
+
+        for($i=$num;$i>0;$i--){
+            if($num%$i==0){
+                echo $i.", ";
+                $contMulti++;
+            }
+        }
+
+        echo "<br><br>".PHP_EOL;
+        echo "El número $num tiene $contMulti múltiplos.".PHP_EOL;
 
     ?>
     </div>
