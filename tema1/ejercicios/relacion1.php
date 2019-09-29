@@ -246,6 +246,30 @@
     <h3 class='text-center'>Ejercicio9</h3>
     <?php
         /*Ejercicio9
+        La solución de una ecuación lineal de tipo ax+b=c con a, b, c números reales con
+        a!=0 esx=c−baSiempre tiene solución. Hacer un programa que dados los coeficientes
+        a, b, c me calcule la solución de la ecuación.
+        */
+        echo "<br>".PHP_EOL;
+
+        $a=rand(0,200);
+        $b=rand(0,200);
+        $c=rand(0,200);
+
+        if($a==0){
+            echo "El coeficiente a debe ser distinto de 0.".PHP_EOL;
+        }else{
+            echo "La solución de la ecuación ".$a."x+".$b."=".$c." es:".PHP_EOL;
+            echo "<br>".PHP_EOL;
+            echo (($c-$b)/$a).PHP_EOL;
+        }
+    ?>
+    </div>
+
+    <div class='container mt-4'>
+    <h3 class='text-center'>Ejercicio10</h3>
+    <?php
+        /*Ejercicio10
         Una ecuación de segundo grado es de la forma aX² + bX + c = 0 donde a, b, c son números reales y a!=0.
         Una ecuación de este tipo puede tener 2, 1, o 0 soluciones.
         La formula que me da la/s solucione/s es : [Imagen en el PDF]
