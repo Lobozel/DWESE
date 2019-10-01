@@ -32,6 +32,8 @@
         }
     }
 
+    
+
     function validarEmail($email){
         $position=strrpos($email, '@');
         if($position!=-1){
