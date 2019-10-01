@@ -14,14 +14,17 @@
     la dirección es válida escribe por un lado el nombre de usuario y por otro el dominio de dicha
     dirección.
     */
-    echo "<div style='margin-top:25px;margin-right:auto;margin-left:auto;text-align:center;'>";
-    echo $value = '<input type="text"></input>';
-    echo "</div>";
+    echo "<form action='Ej2.php' method='post' style='margin-top:25px;margin-right:auto;margin-left:auto;text-align:center;'>";
+    echo "<input name='correo' type='text'></input>";
+    echo "<input type ='submit' value='Validar' style='margin-left:25px;'></input>";
+    echo "</form>";
 
-    if($value=="patata"){
-        echo "Has escrito patata";
+    if(isset($_POST["correo"])) {
+        $texto = $_POST["correo"];
+        
+        echo $texto;
+        
     }
-    
 
     ?>
     </body>
