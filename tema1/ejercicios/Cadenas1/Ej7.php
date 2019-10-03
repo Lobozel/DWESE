@@ -8,7 +8,23 @@
     </head>
     <body>
     <?php
+    /*
+    Realiza una página PHP en la que se introduzca una frase en una variable y a continuación
+    muestre la misma frase repitiendo todos sus caracteres. Así:
+    CadenaOriginal
+    CCaaddeennaaOOrriiggiinnaall
+    */
+    $cadena="Cadena NO original";
+    $resultado="";
 
+    for($i=0;$i<strlen($cadena);$i++){
+        $resultado=$resultado.$cadena[$i].$cadena[$i];
+    }
+
+    echo $cadena.PHP_EOL;
+    echo "<br>".PHP_EOL;
+    echo $resultado.PHP_EOL;
+    
     ?>
     </body>
 </html>

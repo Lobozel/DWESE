@@ -8,6 +8,13 @@
     </head>
     <body>
     <?php
+    /*
+    Realiza una página PHP en la que por medio de la función printf muestre un número tanto en
+    binario como en octal.
+    */
+    $num=rand(1,500);
+
+    printf("El número en decimal %d es %o en Octal y %X en hexadecimal.", $num, $num, $num);
 
     ?>
     </body>
