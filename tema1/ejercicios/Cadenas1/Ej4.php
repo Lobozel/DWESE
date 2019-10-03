@@ -8,7 +8,12 @@
     </head>
     <body>
     <?php
+    /*
+    Realiza una página PHP en la que se introduzca una frase en una variable. Muestra por pantalla
+    las dos primeras palabras de esa frase.
+    */
 
+    
     ?>
     </body>
 </html>
