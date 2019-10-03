@@ -12,8 +12,16 @@
     Realiza una página PHP en la que se introduzca una frase en una variable. Muestra por pantalla
     las dos primeras palabras de esa frase.
     */
-
-    
+    $frase="Esto es una frase";
+    $modFrase=explode(" ",trim($frase));
+    if(count($modFrase)>1){
+        for($i=0;$i<2;$i++){
+            echo $modFrase[$i].PHP_EOL;
+            echo "<br>".PHP_EOL;
+        }
+    }else{
+        echo "<h3 class='text-danger'>No se ha introducido una frase</h3>".PHP_EOL;
+    }    
     ?>
     </body>
 </html>
