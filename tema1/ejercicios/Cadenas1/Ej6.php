@@ -14,7 +14,7 @@
     */
     $num=rand(1,500);
 
-    printf("El número en decimal %d es %o en Octal y %X en hexadecimal.", $num, $num, $num);
+    printf("El número en decimal %d es %d en binario y %o en octal.", $num, $num, $num);
 
     ?>
     </body>
