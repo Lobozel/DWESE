@@ -15,6 +15,15 @@ cadena para:
     Averiguar la posición de la palabra PHP
     Reemplazar la palabra “aventura” por la cadena “<’b>misión</b>”.
     */
+
+    $frase="Bienvenidos al a aventura de aprender PHP en 30 horas";
+
+    echo "El caracter central es: ".$frase[(int)(strlen($frase)/2)].PHP_EOL;
+    echo "<br>".PHP_EOL;
+    echo "La posición de la palabra PHP es: ".strpos($frase,'PHP').PHP_EOL;
+    echo "<br>".PHP_EOL;
+    echo substr_replace($frase,"<'b>misión&lt;/b>",strpos($frase,'aventura'),strlen('aventura'));
+    echo "<br>".PHP_EOL;
     
     ?>
     </body>
