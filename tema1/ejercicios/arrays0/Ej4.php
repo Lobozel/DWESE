@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Ejercicio 1</title>
+        <title>Ejercicio 4</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -9,13 +9,10 @@
     <body>
     <?php
     /*
-    Almacena en un array los 10 primeros números pares. Imprímelos cada uno en una línea
+Crea un array e introduce los siguientes valores: Pedro, Ana, 34 y 1, respectivamente sin asignar el
+índice de la matriz. Muestra el esquema del array con print_r().
     */
-    $cont=0;
-    for($i=2;$cont<10;$i=$i+2,$cont++){
-        $array[$cont]=$i;
-    }
-    print_r($array);
+    
     ?>
     </body>
 </html>

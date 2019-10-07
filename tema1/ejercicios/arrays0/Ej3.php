@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Ejercicio 1</title>
+        <title>Ejercicio 3</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -9,13 +9,11 @@
     <body>
     <?php
     /*
-    Almacena en un array los 10 primeros números pares. Imprímelos cada uno en una línea
+Realizar un programa que muestre las películas que se han visto. Crear un array que contenga los
+meses de enero, febrero, marzo y abril, asignando los valores 9, 12, 0 y 17, respectivamente. Si en alguno
+de los meses no se ha visto ninguna película, no ha de mostrar la información de ese mes.
     */
-    $cont=0;
-    for($i=2;$cont<10;$i=$i+2,$cont++){
-        $array[$cont]=$i;
-    }
-    print_r($array);
+    
     ?>
     </body>
 </html>
