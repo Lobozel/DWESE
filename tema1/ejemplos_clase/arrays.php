@@ -117,7 +117,40 @@
     print_r($misCapitales).PHP_EOL;
     echo "<br>".PHP_EOL;
 
-    
+    $comunidades=[
+        "Andalucia" =>["Almeria","Cadiz","Cordoba","Granada","huelva"],
+        "Extremadura" =>["Badajoz","Caceres"],
+        "Aragon" =>["Zaragoza","Huesca","Teruel"],
+        "Valencia" =>["Alicante","Castellon","Valencia"]
+    ];
+    $datos=[
+        "uno" =>"El primer dato",
+        "dos" =>"El segundo",
+        "tres" =>"otro dato mas"
+    ];
+    echo "<p class='text-center'>array_keys y array_values</p>";
+    echo "El array \$datos<br>";
+    print_r($datos);
+    echo "<br>Usando array_keys<br>";
+    print_r(array_keys($datos));
+    echo "<br>Usando array_values<br>";
+    print_r(array_values($datos));
+    //----------------
+    echo "<br>------------------------------<br>";
+    echo "El array \$comunidades<br>";
+    print_r($comunidades);
+    echo "<br>Usando array_keys<br>";
+    print_r(array_keys($comunidades));
+    echo "<br>Usando array_values<br>";
+    print_r(array_values($comunidades));
+    //Ordenacion de arrays
+    $aux=$datos;
+    echo "<br>-----Ordenación SORT------<br>";
+    echo "<br>Antes de sort<br>";
+    print_r($aux);
+    echo "<br>Despues de sort<br>";
+    sort($aux);
+    print_r($aux);
 
     echo "<br><br>".PHP_EOL;
     ?>
