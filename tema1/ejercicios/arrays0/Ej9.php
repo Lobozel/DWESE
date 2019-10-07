@@ -34,7 +34,89 @@ articulo 4 |
 El total de stock es de : 99 (obviamente sumamos el stock)
 b) Misma salida pero solo nos mostrará los árticulos de tipo Informática.
     */
-    
+    $articulos=[
+        "articulo1"=>[
+            "nombre"=>"Bombilla",
+            "pvp"=>23.4,
+            "tipo"=>"Electricidad",
+            "stock"=>45
+        ],
+        "articulo2"=>[
+            "nombre"=>"Brasero",
+            "pvp"=>123.4,
+            "tipo"=>"Electricidad",
+            "stock"=>4
+        ],
+        "articulo3"=>[
+            "nombre"=>"Monitor led 19",
+            "pvp"=>203.4,
+            "tipo"=>"Informatica",
+            "stock"=>5
+        ],
+        "articulo4"=>[
+            "nombre"=>"tablet 10",
+            "pvp"=>123.4,
+            "tipo"=>"Informatica",
+            "stock"=>45
+        ]
+        ];
+        
+
+        $countStock=0;
+        echo "<br><table align='center' border=2>".PHP_EOL;
+        echo "<tr>".PHP_EOL.
+        "<td></td>".PHP_EOL.
+        "<td>Nombre</td>".PHP_EOL.
+        "<td>PVP (€)</td>".PHP_EOL.
+        "<td>Tipo</td>".PHP_EOL.
+        "<td>Stock</td>".PHP_EOL.
+        "</tr>".PHP_EOL;
+        for($i=0;$i<count($articulos);$i++){
+            echo "<tr>".PHP_EOL;
+            echo "<td>".key($articulos)."</td>".PHP_EOL;
+            $aux=current($articulos);
+            $countStock=$countStock+$aux["stock"];
+            for($j=0;$j<count($aux);$j++){
+                echo "<td>".current($aux)."</td>".PHP_EOL;
+                next($aux);
+            }
+            next($articulos);
+            echo "</tr>".PHP_EOL;
+        }
+        
+        echo "</table>".PHP_EOL;
+
+        echo "<br>El total de stock es de : $countStock<br><br>".PHP_EOL;
+
+
+        reset($articulos);
+        $countStock=0;
+        echo "<br><table align='center' border=2>".PHP_EOL;
+        echo "<tr>".PHP_EOL.
+        "<td></td>".PHP_EOL.
+        "<td>Nombre</td>".PHP_EOL.
+        "<td>PVP (€)</td>".PHP_EOL.
+        "<td>Tipo</td>".PHP_EOL.
+        "<td>Stock</td>".PHP_EOL.
+        "</tr>".PHP_EOL;
+        for($i=0;$i<count($articulos);$i++){
+            $aux=current($articulos);
+            if($aux["tipo"]=="Informatica"){
+                echo "<tr>".PHP_EOL;
+            echo "<td>".key($articulos)."</td>".PHP_EOL;            
+            $countStock=$countStock+$aux["stock"];
+            for($j=0;$j<count($aux);$j++){
+                echo "<td>".current($aux)."</td>".PHP_EOL;
+                next($aux);
+            }            
+            echo "</tr>".PHP_EOL;
+            }            
+            next($articulos);
+        }
+        
+        echo "</table>".PHP_EOL;
+
+        echo "<br>El total de stock es de : $countStock<br><br>".PHP_EOL;
     ?>
     </body>
 </html>

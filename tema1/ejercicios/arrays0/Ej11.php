@@ -14,7 +14,26 @@ Tenemos el array
 a) Guardar en un array las keys de array anterior y muestralo
 b) Guardar los valores del array anterior en otro array y muestralo
     */
-    
+    $arrays=[
+        "nombre"=>["Juan","Manuel"],
+        "1"=>["Pepe"],
+        "5"=>["Dario","Ines","Manolo"],
+        "cosa"=>["Television"]
+    ];
+
+    do{
+        $keys[]=key($arrays);
+        $array=current($arrays);
+        do{
+            $values[]=current($array);
+        }while(next($array));
+    }while(next($arrays));
+
+
+    echo "Array de keys:<br>".PHP_EOL;
+    print_r($keys).PHP_EOL;;
+    echo "<br>Array de valores:<br>".PHP_EOL;
+    print_r($values).PHP_EOL;;
     ?>
     </body>
 </html>

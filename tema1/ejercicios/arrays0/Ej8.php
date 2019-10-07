@@ -12,7 +12,22 @@
 Crea un array con los nombres Pedro, Ismael, Sonia, Clara, Susana, Alfonso y Teresa. Muestra el
 número de elementos que contiene y cada elemento en una lista HTML no numerada.
     */
-    
+    $nombres=[
+        "Pedro",
+        "Ismael",
+        "Sonia",
+        "Clara",
+        "Susana",
+        "Alfonso",
+        "Teresa"
+    ];
+
+    echo "El array de nombres contiene ".count($nombres)." elementos:<br>".PHP_EOL;
+    echo "<ul>".PHP_EOL;
+    foreach($nombres as $indice=>$nombre)	{
+	    echo "<li>".$nombre."</li>".PHP_EOL;
+	}
+    echo "</ul>".PHP_EOL;
     ?>
     </body>
 </html>

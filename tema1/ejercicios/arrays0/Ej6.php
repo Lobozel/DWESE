@@ -14,7 +14,18 @@ Chicago, sin asignar índices al array. A continuación, muestra el contenido de
 diciendo el valor correspondiente a cada índice, ejemplo:
 La ciudad con el índice 0 tiene el nombre Madrid
     */
-    
+    $ciudades=[
+        "Madrid",
+        "Barcelona",
+        "Londres",
+        "New York",
+        "Los Ángeles",
+        "Chicago"
+    ];
+
+    foreach($ciudades as $indice=>$ciudad)	{
+	    echo "La ciudad con el índice ".$indice." tiene el nombre ".$ciudad."<br>".PHP_EOL;
+	}
     ?>
     </body>
 </html>

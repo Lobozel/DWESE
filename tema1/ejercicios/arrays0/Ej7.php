@@ -12,7 +12,18 @@
 Repite el ejercicio anterior pero ahora si se ha de crear índices, ejemplo: El índice del array que
 contiene como valor Madrid es MD.
     */
-    
+    $ciudades=[
+        "MD"=>"Madrid",
+        "BC"=>"Barcelona",
+        "LD"=>"Londres",
+        "NY"=>"New York",
+        "LA"=>"Los Ángeles",
+        "C"=>"Chicago"
+    ];
+
+    foreach($ciudades as $indice=>$ciudad)	{
+	    echo "El índice del array que contiene como valor ".$ciudad." es ".$indice."<br>".PHP_EOL;
+	}
     ?>
     </body>
 </html>

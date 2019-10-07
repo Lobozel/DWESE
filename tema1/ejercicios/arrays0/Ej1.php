@@ -11,11 +11,14 @@
     /*
     Almacena en un array los 10 primeros números pares. Imprímelos cada uno en una línea
     */
-    $cont=0;
-    for($i=2;$cont<10;$i=$i+2,$cont++){
+    for($i=2,$cont=0;$cont<10;$i=$i+2,$cont++){
         $array[$cont]=$i;
     }
-    print_r($array);
+    
+    do{        
+        echo current($array)."<br>".PHP_EOL;
+    }while(next($array));
+    
     ?>
     </body>
 </html>

@@ -13,6 +13,45 @@ Tenemos el array siguiente:
 “Luis”, “Ana”, “Lucas”, “Zacarias”, “Tomas”, “Juan”, “Ginesa”, “Oscar”
 Mustra el array resultante al aplicarle al anterior sort(), rsort(), asort(), arsort()
     */
+    $nombres=[
+        "Luis",
+        "Ana",
+        "Lucas",
+        "Zacarias",
+        "Tomas",
+        "Juan",
+        "Ginesa",
+        "Oscar"
+    ];
+
+    echo "Antes de aplicar los distintos métodos de ordenación<br>".PHP_EOL;
+    print_r($nombres);
+    
+    echo "<br>------------------------<br>".PHP_EOL;
+    echo "Después de aplicar sort()<br>".PHP_EOL;
+    $sortNombres=$nombres;
+    sort($sortNombres);
+    print_r($sortNombres);
+    
+    echo "<br>------------------------<br>".PHP_EOL;
+    echo "Después de aplicar rsort()<br>".PHP_EOL;
+    $rsortNombres=$nombres;
+    rsort($rsortNombres);
+    print_r($rsortNombres);
+    
+
+    echo "<br>------------------------<br>".PHP_EOL;
+    echo "Después de aplicar asort()<br>".PHP_EOL;
+    $asortNombres=$nombres;
+    asort($asortNombres);
+    print_r($asortNombres);
+    
+
+    echo "<br>------------------------<br>".PHP_EOL;
+    echo "Después de aplicar arsort()<br>".PHP_EOL;
+    $arsortNombres=$nombres;
+    arsort($arsortNombres);
+    print_r($sortNombres);
     
     ?>
     </body>

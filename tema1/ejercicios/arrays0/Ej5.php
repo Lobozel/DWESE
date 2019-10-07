@@ -15,7 +15,15 @@ Dirección: C/ Mayor, 37
 Teléfono: 123456789
 Al acabar muestra los datos por pantalla
     */
-    
+    $persona=[
+        "Nombre:"=>"Pedro Torres",
+        "Dirección:"=>"C/ Mayor, 37",
+        "Teléfono:"=>"123456789"
+    ];
+
+    foreach($persona as $tabla=>$data)	{
+	    echo $tabla." ".$data."<br>".PHP_EOL;
+	}
     ?>
     </body>
 </html>

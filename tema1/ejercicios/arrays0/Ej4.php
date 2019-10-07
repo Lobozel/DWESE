@@ -12,7 +12,13 @@
 Crea un array e introduce los siguientes valores: Pedro, Ana, 34 y 1, respectivamente sin asignar el
 índice de la matriz. Muestra el esquema del array con print_r().
     */
-    
+    $array=[
+        "Pedro",
+        "Ana",
+        34,
+        1
+    ];
+    print_r($array);
     ?>
     </body>
 </html>
