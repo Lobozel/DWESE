@@ -44,7 +44,6 @@
     echo "<br>".PHP_EOL;
     echo substr($frase,-6).PHP_EOL;
     echo "<br>".PHP_EOL;
-    //Esta mal
     echo substr($frase,-26,6).PHP_EOL;
     echo "<br>".PHP_EOL;
     echo substr($frase,4,-7).PHP_EOL;
