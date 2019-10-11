@@ -9,9 +9,28 @@
     <body>
     <?php
     /*
-    
+    Idem anterior pero encontrar el mínimo.
     */
+    //Lo inicializo al número más grande representable para estar seguro de que empieza
+    //con el valor más alto de los que se van a comparar
+    $menor=PHP_INT_MAX; 
+    $array=[];
+
+    for($i=0;$i<10;$i++){
+        $array[$i]=rand(0,100);
+    }
     
+    for($i=0;$i<count($array);$i++){
+        if($menor>$array[$i]){
+            $menor=$array[$i];
+        }
+    }
+
+    echo "El array contiene los siguientes números:<br>".PHP_EOL;
+    print_r($array);
+    echo "<br><br>".PHP_EOL;
+
+    echo "El número menor del array es $menor".PHP_EOL;
     
     ?>
     </body>

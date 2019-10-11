@@ -9,7 +9,25 @@
     <body>
     <?php
     /*
-    
+    Dado el siguiente array:
+$paises = array (
+ 'alemania',
+ 'brasil',
+ 'italia',
+ 'chile',
+ 'uruguay',
+ 'australia'
+);
+Se pide lo siguiente
+1.Eliminar los elementos ‘alemania’, ‘italia’ y ‘australia’
+2.Insertar los elementos ‘argentina’ y ‘bolivia’
+3.Ordenar por orden alfabético el array
+4.Mostrar el resultado por pantalla con print_r
+Este es muy fácil si tenemos presentes las funciones de la clase teórica. Primero
+se hace la definición que está ya hecha en el enunciado. Luego se eliminan con
+la función unset aquellos elementos que se piden. A continuación, se agregan
+los dos que se piden, se ordenan con sort y finalmente se muestra por pantalla
+con print_r.
     */
     
     

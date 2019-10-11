@@ -9,9 +9,31 @@
     <body>
     <?php
     /*
-    
+    Definir un array con valores numéricos. Realizar la suma de todos los valores y
+guardarlo en una variable. Mostrar la suma por pantalla.
     */
     
+    $array=[
+        rand(0,100),
+        rand(0,100),
+        rand(0,100),
+        rand(0,100),
+        rand(0,100)
+    ];
+
+    function sumar($arr){   
+        if(is_array(current($arr))){
+            return sumar(current($arr));
+        }else if(is_numeric(current($arr))){
+            $valor=current($arr);
+            next($arr);
+            return $valor+sumar($arr);
+        }else{
+            return 0;
+        }
+    }
+
+    echo "La suma es ".sumar($array);
     
     ?>
     </body>

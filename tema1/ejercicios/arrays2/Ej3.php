@@ -9,8 +9,27 @@
     <body>
     <?php
     /*
-    
+    Definir un array que tenga como valor diez títulos de películas. Utilizar la
+función sort para ordenarlos de forma alfabética y mostrarlo por pantalla con
+print_r
     */
+    $pelis=[
+        "Colorfun",
+        "El castillo en el cielo",
+        "El Viaje de Chihiro",
+        "La tumba de las luciernagas",
+        "Ponyo",
+        "Top Secret",
+        "Wolf Children",
+        "Kung Fusion",
+        "Hot Shots",
+        "Tenacious D"
+    ];
+
+    echo "Películas sin ordenar:<br>".PHP_EOL;
+    print_r($pelis);
+    echo "<br><br>Películas ordenadas con sort:<br>".PHP_EOL;
+    print_r($pelis);
     
     
     ?>

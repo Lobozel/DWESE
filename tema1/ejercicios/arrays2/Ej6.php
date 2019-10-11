@@ -9,9 +9,14 @@
     <body>
     <?php
     /*
-    
+    Realizar un dado virtual en PHP mediante el uso de arrays. Cada vez que se
+refresque la pantalla, deberá verse un número distinto al azar entre 1 y 6
     */
-    
+    $caras=[
+        1,2,3,4,5,6
+    ];
+
+    echo $caras[rand(0,count($caras))].PHP_EOL;
     
     ?>
     </body>

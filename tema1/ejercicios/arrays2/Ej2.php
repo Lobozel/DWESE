@@ -9,9 +9,21 @@
     <body>
     <?php
     /*
-    
+    Definir un array que tenga claves de un caracter representando cada letra del
+alfabeto desde la a hasta la f. En la misma definición, asignarle a cada clave un
+nombre propio que comience con esa letra. Ejemplo array (‘a’=>’Amanda’);
+Mostrar el resultado por pantalla con var_dump.
     */
-    
+    $array=[
+        "a"=>"Amanda",
+        "b"=>"Blanca",
+        "c"=>"Carol",
+        "d"=>"Diana",
+        "e"=>"Elaine",
+        "f"=>"Fumiko"
+    ];
+
+    var_dump($array);
     
     ?>
     </body>

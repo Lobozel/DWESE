@@ -9,8 +9,21 @@
     <body>
     <?php
     /*
-    
+    Realizar una ruleta virtual en PHP, de la misma manera que con el dado.
     */
+    $opciones=[
+        "Si",
+        "No",
+        "Preguntale a tu madre",
+        "No estoy seguro, recarga la página",
+        "Probablemente",
+        "Es mejor que lo busques en Google",
+        "No cuentes con ello",
+        "Jamás",
+        "Seguro"
+    ];
+
+    echo $opciones[rand(0,count($opciones))].PHP_EOL;
     
     
     ?>

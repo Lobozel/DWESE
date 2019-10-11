@@ -9,9 +9,15 @@
     <body>
     <?php
     /*
-    
+    Dado el siguiente array: $nombres = array
+(‘roberto’,’juan’,’marta’,’moria’,’martin’,’jorge’,’miriam’,’nahuel’,’mirta’).
+Realizar un programa en PHP que lo recorra y genere un nuevo array con
+aquellos nombres que comiencen con la letra m. Definir qué bucle conviene
+usar y luego mostrar el array por pantalla sin usar var_dump ni print_r. Los
+nombres deben aparecer separados por coma.
     */
-    
+    $nombres = array
+('roberto','juan','marta','moria','martin','jorge','miriam','nahuel','mirta');
     
     ?>
     </body>

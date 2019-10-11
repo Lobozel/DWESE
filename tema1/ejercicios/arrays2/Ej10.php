@@ -9,9 +9,21 @@
     <body>
     <?php
     /*
-    
+    Realizar un programa que arme la estructura HTML de una tabla con 20 filas y
+10 columnas utilizando dos bucles for. Dentro de las celdas debe ponerse una
+letra O.
     */
-    
+    echo "<table align='center' border=2>".PHP_EOL;
+
+    for($i=0;$i<20;$i++){
+        echo "<tr>".PHP_EOL;
+        for($j=0;$j<10;$j++){
+            echo "<td>O</td>".PHP_EOL;
+        }
+        echo "</tr>".PHP_EOL;
+    }
+
+    echo "</table>".PHP_EOL;
     
     ?>
     </body>
