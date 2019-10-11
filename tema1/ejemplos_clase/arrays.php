@@ -226,6 +226,19 @@
     print_r($union);
     echo "<br>".PHP_EOL;
 
+    $mat1=[
+        1=>"'valor de mat1'",
+        "dos",
+        5=>"'valor 5'"
+    ];
+    $mat2=[
+        1=>"'valor1 de array2'",
+        "'valor 2 array 2'",
+        5=>"'valor 5 array2'"
+    ];
+    echo "<br>Mat1<br>";
+    print_r()
+
     echo "<br><br>".PHP_EOL;
     ?>
     </body>
