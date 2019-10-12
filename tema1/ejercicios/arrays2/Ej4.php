@@ -30,7 +30,7 @@ arrays y mostrarla por pantalla.
 
     $suma+=sumar($asociativo);
     $suma+=sumar($enumerativo);
-    $suma+=sumar($mixto;)
+    $suma+=sumar($mixto);
 
 
     function sumar($arr){   

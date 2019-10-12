@@ -16,7 +16,8 @@ refresque la pantalla, deberá verse un número distinto al azar entre 1 y 6
         1,2,3,4,5,6
     ];
 
-    echo $caras[rand(0,count($caras))].PHP_EOL;
+    echo "Resultado de la tirada [D6]:<br>".PHP_EOL;
+    echo $caras[rand(0,count($caras)-1)].PHP_EOL;
     
     ?>
     </body>

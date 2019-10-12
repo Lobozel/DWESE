@@ -18,7 +18,19 @@ nombres deben aparecer separados por coma.
     */
     $nombres = array
 ('roberto','juan','marta','moria','martin','jorge','miriam','nahuel','mirta');
-    
+    $nombresM=[];
+
+    do{
+        $valor=current($nombres);
+        if($valor[0]=="m"){
+            $nombresM[]=$valor;
+        }
+    }while(next($nombres));
+
+    do{
+        echo current($nombresM).", ";
+    }while(next($nombresM));
+
     ?>
     </body>
 </html>

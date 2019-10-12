@@ -15,22 +15,50 @@
     */
     $colores=[
         "Colores fuertes"=>[
-            "Rojo:FF0000",
-            "Verde:00FF00",
-            "Azul:0000FF"
+            "FF0000",
+            "00FF00",
+            "0000FF"
         ],
         "Colores suaves"=>[
-            "Rosa:FE9ABC",
-            "Amarillo:FDF189",
-            "Malva:BC8F8F"
+            "FE9ABC",
+            "FDF189",
+            "BC8F8F"
         ]
         ];
 
-    if(in_array("FF88CC",$colores,true)){
-          echo "El color \"FF88CC\" se encuentra en el array \$colores<br>".PHP_EOL;
-    }
-    if(in_array("FF0000",$colores,true)){
-        echo "El color \"FF000\" se encuentra en el array \$colores<br>".PHP_EOL;
+        $needle="FF88CC";
+
+        if (in_arrayMejorado($colores,$needle)){
+            echo "El color $needle se encuentra dentro del array<br>".PHP_EOL;
+        }else{
+            echo "El color $needle NO se encuentra dentro del array<br>".PHP_EOL;
+        }
+
+        $needle="FF0000";
+
+        if (in_arrayMejorado($colores,$needle)){
+            echo "El color $needle se encuentra dentro del array<br>".PHP_EOL;
+        }else{
+            echo "El color $needle NO se encuentra dentro del array<br>".PHP_EOL;
+        }
+
+    //Usa el método in_array para buscar el valor $needle dentro de un array
+    //Si el array original tiene elementos arrays, busca dentro de estos sub_arrays también
+    function in_arrayMejorado($array,$needle){
+        if(in_array($needle,$array)){
+            return true;
+        }else{
+            if(is_array(current($array))){
+                if(in_array($needle,current($array))){
+                    return true;
+                }else{
+                    next($array);
+                    in_arrayMejorado($array,$needle);
+                }
+            }else{
+                return false;
+            }
+        }
     }
     
     

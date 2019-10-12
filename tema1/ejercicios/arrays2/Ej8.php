@@ -14,8 +14,31 @@ decimal) y que cada elemento representa la venta del día de un comercio.
 Calcular el promedio de venta por día utilizando alguna estructura iterativa.
 Mostrar el resultado por pantalla.
     */
+    $array=[];
+    $tamanio=20;
+
+    for($i=0;$i<$tamanio;$i++){
+        $array[$i]=rand(10,1000)/10;
+    }
+    print_r($array);
     
-    
+    $suma=sumar($array);
+    $promedio=$suma/$tamanio;
+
+    echo "<br><br>El promedio del array es $promedio".PHP_EOL;
+
+    function sumar($arr){   
+        if(is_array(current($arr))){
+            return sumar(current($arr));
+        }else if(is_numeric(current($arr))){
+            $valor=current($arr);
+            next($arr);
+            return $valor+sumar($arr);
+        }else{
+            return 0;
+        }
+    }
+
     ?>
     </body>
 </html>

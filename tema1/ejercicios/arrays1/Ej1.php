@@ -28,7 +28,7 @@
     }
     
     echo "<br>Días de la semana en un for:<br>".PHP_EOL;
-    for($i=0;count($dias);$i++){
+    for($i=0;$i<count($dias);$i++){
 	    echo "El índice del array que contiene como valor ".$i." es ".$dias[$i]."<br>".PHP_EOL;        
     }
     

@@ -20,13 +20,11 @@
         "Jose Manuel",
         "Quique"
     ];
-    $aux=$alumnos;
     echo "Los 3 primeros alumnos con array_slice<br>".PHP_EOL;
-    array_slice($aux,0,3);
+    $aux=array_slice($alumnos,0,3);
     print_r($aux);
     echo "<br>Los dos últimos alumnos con array_slice<br>".PHP_EOL;
-    $aux=$alumnos;
-    array_slice($aux,3);
+    $aux=array_slice($alumnos,3);
     print_r($aux);
     echo "<br>Los 3 primeros alumnos con array_splice<br>".PHP_EOL;
     $aux=$alumnos;

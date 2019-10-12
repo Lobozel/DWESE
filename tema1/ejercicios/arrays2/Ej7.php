@@ -23,7 +23,14 @@
         "Seguro"
     ];
 
-    echo $opciones[rand(0,count($opciones))].PHP_EOL;
+    //Este script hace que aparezca una pantalla emergente pidiendole al usuario realizar una pregunta
+    //Solo sirve para que el programa parezca mas complejo y luzca mejor
+    echo("<script type='text/javascript'> var pregunta = prompt('¿Qué deseas saber?'); </script>").PHP_EOL;
+    //Este script unicamente escribe en la pagina lo que el usuario habia introducido
+    echo ("<script type='text/javascript'> document.write(pregunta); </script>").PHP_EOL;
+
+    echo "<br>".PHP_EOL;
+    echo $opciones[rand(0,count($opciones)-1)].PHP_EOL;
     
     
     ?>

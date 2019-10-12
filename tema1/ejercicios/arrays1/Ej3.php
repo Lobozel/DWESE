@@ -34,7 +34,7 @@
             echo "<tr>".PHP_EOL;
             echo "<td>".key($colores)."</td>".PHP_EOL;
             do{
-                echo "<td>".current($aux)."</td>".PHP_EOL;
+                echo "<td bgcolor=".substr(current($aux),-6).">".current($aux)."</td>".PHP_EOL;
             }while(next($aux));
             echo "</tr>".PHP_EOL;
         }while(next($colores));
