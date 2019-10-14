@@ -16,8 +16,48 @@ Familia “Los Simpson”: padre Homer, madre Marge, hijos Bart, Lisa y Maggie.
 Familia “Los Griffin”: padre Peter, madre Lois, hijos Chris, Meg y Stewie
 Muestra los valores de las dos familias en una lista no numerada.
     */
+    $familias=[
+        "Los Simpson"=>[
+            "padre"=>"Homer",
+            "madre"=>"Marge",
+            "hijos"=>[
+                "Bart",
+                "Lisa",
+                "Maggie"
+            ]
+        ],
+        "Los Griffin"=>[
+            "padre"=>"Peter",
+            "madre"=>"Lois",
+            "hijos"=>[
+                "Chris",
+                "Meg",
+                "Stewie"
+            ]
+        ]
+    ];
+
+
+    mostrarArray($familias);
     
-    
+
+    function mostrarArray($array){
+        echo "<ul>";
+        do{
+            $indice=key($array);
+            if(!is_numeric($indice)){//En este caso uso esto para que no me salgan los indices númericos
+                echo "<li>$indice</li>";
+            }
+            $valor=current($array);
+            if(is_array($valor)){
+                mostrarArray($valor);
+            }else{
+                echo "<li>$valor</li>";
+            }
+        }while(next($array));
+        echo "</ul>";
+    }
+
     ?>
     </body>
 </html>

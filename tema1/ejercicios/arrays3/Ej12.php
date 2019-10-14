@@ -11,8 +11,53 @@
     /*
     Realiza el ejercicio anterior pero utilizando la función array_push()
     */
-    
-    
+    $especies=[
+        "Lagartija",
+        "Araña",
+        "Perro",
+        "Gato",
+        "Ratón"
+    ];
+    $numeros=[
+        "12",
+        "34",
+        "45",
+        "52",
+        "12"
+    ];
+    $arboles=[
+        "Sauce",
+        "Pino",
+        "Naranjo",
+        "Chopo",
+        "Perro",
+        "34"
+    ];
+    $arrays=[];
+
+    echo "<h3>Array1:</h3>".PHP_EOL;
+    print_r($especies);
+    echo "<br><h3>Array2:</h3>".PHP_EOL;
+    print_r($numeros);
+    echo "<br><h3>Array3:</h3>".PHP_EOL;
+    print_r($arboles);
+    echo "<br><h3>Arrays fusionados:</h3>".PHP_EOL;
+
+    $arrays=fusionarArraysConPush($arrays,$especies);
+    $arrays=fusionarArraysConPush($arrays,$numeros);
+    $arrays=fusionarArraysConPush($arrays,$arboles);
+
+    print_r($arrays);
+
+    //Añade todos los valores de un array dentro de otro array con array_push
+    function fusionarArraysConPush($destino, $origen){
+        do{        
+            array_push($destino, current($origen));
+        }while(next($origen));
+        
+        return $destino;
+    }
+
     ?>
     </body>
 </html>

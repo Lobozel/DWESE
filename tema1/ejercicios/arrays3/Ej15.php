@@ -14,6 +14,27 @@ Muestra los valores en una tabla.
 $numeros = array(3, 2, 8, 123, 5, 1);
     */
     
+    $numeros = [
+        "tres"=>3,
+        "dos"=>2,
+        "ocho"=>8,
+        "ciento veintitrés"=>123,
+        "cinco"=>5,
+        "uno"=>1
+    ];
+
+    asort($numeros);
+
+    echo "<br><br>".PHP_EOL;
+
+    echo "<table align='center' border=2>".PHP_EOL;
+        do{
+            echo "<tr>".PHP_EOL;
+            echo "<td>".key($numeros)."</td>".PHP_EOL;
+            echo "<td>".current($numeros)."</td>".PHP_EOL;
+            echo "</tr>".PHP_EOL;
+        }while(next($numeros));
+        echo "</table>".PHP_EOL;
     
     ?>
     </body>

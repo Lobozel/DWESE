@@ -19,8 +19,29 @@ puntero actualmente.
 - Coloca el puntero en la última posición y muestra su valor.
 - Retrocede una posición y muestra este valor.
     */
-    
-    
+    $deportes=[
+        "futbol",
+        "baloncesto",
+        "natación",
+        "tenis"
+    ];
+
+    $tamanio=count($deportes);
+    for($i=0;$i<$tamanio;$i++){
+        echo $deportes[$i]."<br>".PHP_EOL;
+    }
+
+    echo "<br>El total de valores del array es: $tamanio<br>".PHP_EOL;
+    reset($deportes);
+    echo "<br>El valor del array donde se encuentra el puntero es: ".current($deportes)."<br>".PHP_EOL;
+    next($deportes);
+    echo "<br>El valor del array donde se encuentra el puntero es: ".current($deportes)."<br>".PHP_EOL;
+    end($deportes);
+    echo "<br>El valor del array donde se encuentra el puntero es: ".current($deportes)."<br>".PHP_EOL;
+    prev($deportes);
+    echo "<br>El valor del array donde se encuentra el puntero es: ".current($deportes)."<br>".PHP_EOL;
+
+
     ?>
     </body>
 </html>
