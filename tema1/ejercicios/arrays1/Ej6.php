@@ -66,7 +66,21 @@
 
     foreach($capitalesEU as $pais=>$capital)	{
 	    echo "La capital de ".$pais." es ".$capital."<br>".PHP_EOL;
-	}
+    }
+
+    asort($capitalesEU);
+    echo "<h1><br>Ordenadas por capitales:<br></h1>".PHP_EOL;
+    foreach($capitalesEU as $pais=>$capital)	{
+	    echo "La capital de ".$pais." es ".$capital."<br>".PHP_EOL;
+    }
+    
+    ksort($capitalesEU);
+    echo "<h1><br>Ordenadas por paises:<br></h1>".PHP_EOL;
+    foreach($capitalesEU as $pais=>$capital)	{
+	    echo "La capital de ".$pais." es ".$capital."<br>".PHP_EOL;
+    }
+
+    
     
     ?>
     </body>
