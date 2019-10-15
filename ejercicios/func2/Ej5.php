@@ -23,10 +23,12 @@ parámetros.
     function potencia(int $m,int $n){
         if($n==0){
             return 1;
+        }else if($n==1) {
+            return $m;
         }else if($n%2==0){
-            return pow($m,($n/2))*pow($m,($n/2));
+            return potencia($m,$n/2)*potencia($m,$n/2);
         }else{
-            return pow($m,(($n-1)/2))*pow($m,(($n-1)/2))*$m;
+            return potencia($m,($n-1)/2)*potencia($m,($n-1)/2)*$m;
         }
     }
     
