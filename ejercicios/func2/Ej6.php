@@ -13,19 +13,11 @@
     [ver el pdf]
     */
 
-    //He buscado una manera de realizar lo mismo que en el pdf con un código un poco más óptimo
-        for($i=0;$i<2;$i++){
-            for($j=0;$j<3;$j++){
-                echo contar($j);
-            }
-        }
-        
-        function contar($contar){
-            $contar++;
-            return "<p>El valor actual de la variable \$contar es: $contar </p>";
-        }
+ echo "La salida sería:<br>1<br>2<br>3<br>4<br>1<br>1<br>1<br>1<br>".PHP_EOL;
 
-    
+ echo "<br>La razón es que la variable estatica puede ser llamada desde cualquier parte del código, por lo que se puede modificar su valor dentro de la función.<br>".PHP_EOL;
+ echo "Sin embargo, la otra variable se declara de nuevo cada vez que se llama a la función, por lo que su valor se reestablece cada vez.".PHP_EOL;
+
     ?>
     </body>
 </html>
