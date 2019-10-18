@@ -17,7 +17,7 @@
 
  echo "<br>La razón es que la variable estatica puede ser llamada desde cualquier parte del código, por lo que se puede modificar su valor dentro de la función.<br>".PHP_EOL;
  echo "Sin embargo, la otra variable se declara de nuevo cada vez que se llama a la función, por lo que su valor se reestablece cada vez.".PHP_EOL;
-
+    
     ?>
     </body>
 </html>
