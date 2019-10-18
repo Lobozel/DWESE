@@ -40,7 +40,23 @@ número que no esté comprendido entre 10 y 150.
         if(isset($_POST['btnEnviar'])){
             //hemos pulsado enviar, procesaremos los datos
 
-            
+            echo "<br><br>".PHP_EOL;
+
+            $edad=$_POST['edad'];
+
+            if($edad==""){
+                echo "<h2 class='text-danger text-center'>No has introducido tu edad.</h2>".PHP_EOL;
+            }else{
+                echo "<h2 class='text-center'>Edad: $edad</h2>".PHP_EOL;
+            }
+
+            $peso=$_POST['peso'];
+
+            if($peso==""){
+                echo "<h5 class='text-danger text-center'>No has introducido tu peso.</h5>".PHP_EOL;
+            }else{
+                echo "<h3 class='text-center'>Peso: $peso</h3>".PHP_EOL;
+            }
 
             
 
@@ -64,7 +80,7 @@ número que no esté comprendido entre 10 y 150.
                 Escriba su edad:
                 </td>
                 <td>
-                <input type="number" name="edad" min="5" max="130">
+                <input type="number" name="edad" min="5" max="130" value='6'>
                 </td>
                 </tr>
                 <tr>
@@ -72,7 +88,7 @@ número que no esté comprendido entre 10 y 150.
                 Escriba su peso:
                 </td>
                 <td>
-                <input type="number" name="peso" min="10" max="150">
+                <input type="number" name="peso" min="10" max="150" value='10' step=".05">
                 </td>
                 </tr>
                     <tr>
