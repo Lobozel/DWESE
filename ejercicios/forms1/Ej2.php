@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
-    <body>
+    <body style='background-color:silver'>
     <?php
     /*
     Escriba un formulario de recogida de datos personales que conste de dos páginas.
@@ -21,8 +21,41 @@ comprendido entre 5 y 130.
 número que no esté comprendido entre 10 y 150.
 • La edad debe ser un número entero, pero el peso puede tener decimales
     */
-    
-    
     ?>
+    
+    <?php
+        if(isset($_POST['btnEnviar'])){
+            //hemos pulsado enviar, procesaremos los datos
+
+            
+
+            
+
+            ?>
+            <!--Botón Volver-->
+            <p class='text-center mt-5'>
+            <a href='<?php echo $_SERVER['PHP_SELF'];?>' class='btn btn-primary'>Volver</a>
+            </p>
+            <?php
+            
+        }else{
+            //Pinto el formulario
+    ?>
+
+<div class='container mt-5'>
+        <!--?php echo $_SERVER['PHP_SELF'];? coge el nombre de la página tenga el nombre que tenga -->
+            <form name='name' action='<?php echo $_SERVER['PHP_SELF'];?>' method='POST'>
+                <table align='center' cellpadding='5' cellspacing='5'>
+                <tr>
+                </tr>
+                    <tr>
+                        <td colspan='4' align='center'>
+                        <input type='submit' value='Enviar' name='btnEnviar' class='btn btn-warning'>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <?php } ?>
     </body>
 </html>
