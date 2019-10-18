@@ -60,6 +60,20 @@ número que no esté comprendido entre 10 y 150.
             <form name='name' action='<?php echo $_SERVER['PHP_SELF'];?>' method='POST'>
                 <table cellpadding='5' cellspacing='5'>
                 <tr>
+                <td>
+                Escriba su edad:
+                </td>
+                <td>
+                <input type="number" name="edad" min="5" max="130">
+                </td>
+                </tr>
+                <tr>
+                <td>
+                Escriba su peso:
+                </td>
+                <td>
+                <input type="number" name="peso" min="10" max="150">
+                </td>
                 </tr>
                     <tr>
                         <td id='btns' colspan='4'>
