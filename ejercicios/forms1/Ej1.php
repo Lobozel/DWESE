@@ -36,7 +36,23 @@ vacíos.
         if(isset($_POST['btnEnviar'])){
             //hemos pulsado enviar, procesaremos los datos
 
-            
+            echo "<br><br>".PHP_EOL;
+
+            $nombre=$_POST['nombre'];
+
+            if($nombre==""){
+                echo "<h5 class='text-danger text-center'>No has introducido tu nombre.</h5>".PHP_EOL;
+            }else{
+                echo "<h3 class='text-center'>Nombre: $nombre</h3>".PHP_EOL;
+            }
+
+            $apellidos=$_POST['apellidos'];
+
+            if($apellidos==""){
+                echo "<h5 class='text-danger text-center'>No has introducido tus apellidos.</h5>".PHP_EOL;
+            }else{
+                echo "<h3 class='text-center'>Apellidos: $apellidos</h3>".PHP_EOL;
+            }
 
             
 
