@@ -55,6 +55,7 @@ ambos utilizando arrays y mostrar la información enviada.
                     <tr>
                         <td id='btns' colspan='4'>
                         <input type='submit' value='Enviar' name='btnEnviar' class='btn btn-warning'>
+                        <input type='reset' value='Borrar' class='btn btn-primary'>
                         </td>
                     </tr>
                 </table>
