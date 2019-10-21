@@ -38,8 +38,36 @@ establece el formulario.
         if(isset($_POST['btnEnviar'])){
             //hemos pulsado enviar, procesaremos los datos
 
-            
+            echo "<br><br>".PHP_EOL;
 
+            if(isset($_POST['aficiones'])){
+                    $array=$_POST['aficiones'];
+                    echo "<h4 class='text-center'>Tienes las siguientes aficiones:</h4><br>".PHP_EOL;
+                    echo "<p class='text-center'>";
+                    //devuelve un array numerico así que puedo usar el for
+                    for($i=0;$i<count($array);$i++){
+                        echo $array[$i];
+                        //formato de la salida
+                        if($i==count($array)-1){
+                            echo ".";
+                        }else if($i==count($array)-2){
+                            echo " y ";
+                        }else{
+                            echo ", ";
+                        }
+                    }
+                    echo "</p>".PHP_EOL;
+                    echo "<br>".PHP_EOL;
+            } else{
+                echo "<h3 class='text-danger text-center'>No seleccionaste ninguna afición.</h3>".PHP_EOL;
+            }
+
+            if(isset($_POST['sex'])){
+                $genero=$_POST['sex'];
+                echo "<h4 class='text-center'>Eres: $genero</h4><br>".PHP_EOL;
+            } else{
+                echo "<h3 class='text-danger text-center'>No seleccionaste tu genero.</h3>".PHP_EOL;
+            }
             
 
             ?>
@@ -58,6 +86,34 @@ establece el formulario.
             <form name='name' action='<?php echo $_SERVER['PHP_SELF'];?>' method='POST'>
                 <table cellpadding='5' cellspacing='5'>
                 <tr>
+                    <td>
+                        Indique su sexo y aficiones
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Sexo:</b>
+                    </td>
+                    <td>
+                        <input type="radio" name="sex" value='hombre'> Hombre
+                    </td>
+                    <td>
+                        <input type="radio" name="sex" value='mujer'> Mujer
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Aficiones:</b>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="aficiones[]" value='cine'> Cine
+                    </td>
+                    <td>
+                        <input type="checkbox" name="aficiones[]" value='literatura'> Literatura
+                    </td>
+                    <td>
+                        <input type="checkbox" name="aficiones[]" value='musica'> Música
+                    </td>
                 </tr>
                     <tr>
                         <td id='btns' colspan='4'>
