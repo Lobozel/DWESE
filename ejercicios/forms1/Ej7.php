@@ -32,19 +32,74 @@ donde procesemos el formulario.
     ?>
     
     <?php
-        if(isset($_POST['btnEnviar'])){
-            //hemos pulsado enviar, procesaremos los datos
 
-            
-
-            
-
+        function btnVolver(){
             ?>
-            <!--Botón Volver-->
             <p class='text-center mt-5'>
             <a href='<?php echo $_SERVER['PHP_SELF'];?>' class='btn btn-primary'>Volver</a>
             </p>
             <?php
+        }
+
+        function mierror($msj){
+            echo "<div class='cointainer text-center mt-5'>";
+            echo "<p class='text-danger text-weight-bold'>$msj</p>";
+            btnVolver();
+            echo "</div>";
+            die();
+        }
+    ?>
+
+    <?php
+        if(isset($_POST['btnEnviar'])){
+            //hemos pulsado enviar, procesaremos los datos
+
+            
+            if(is_uploaded_file($_FILES['pdf']['tmp_name'])){
+
+                
+
+            if(!in_array($_FILES['pdf']['type'],['application/pdf'])){
+                mierror("No es un archivo de pdf!!!!");
+            }else{
+                echo "Se ha subido el pdf";
+
+            }
+
+
+        }else{
+            mierror("No se subió el archivo PDF");
+        }
+
+        echo "<br>";
+
+        if(is_uploaded_file($_FILES['imagen']['tmp_name'])){
+            
+            $array=[
+                'image/jpeg',
+                'image/png',
+                'image/tiff',
+                'image/bmp',
+                'image/gif',
+                'image/x-icon',
+                'image/svg+xml'
+            ];
+            if(!in_array($_FILES['imagen']['type'],$array)){
+                mierror("No es un archivo de imágen!!!!");
+            }else{
+                echo "Se ha subido la foto";
+
+            }
+
+
+        }else{
+            mierror("No se subió la foto");
+        }
+            
+
+            
+
+            btnVolver();
             
         }else{
             //Pinto el formulario
@@ -52,13 +107,27 @@ donde procesemos el formulario.
 
 <div class='container mt-5'>
         <!--?php echo $_SERVER['PHP_SELF'];? coge el nombre de la página tenga el nombre que tenga -->
-            <form name='name' action='<?php echo $_SERVER['PHP_SELF'];?>' method='POST'>
+            <form name='name' action='<?php echo $_SERVER['PHP_SELF'];?>' ENCTYPE='multipart/form-data' method='POST'>
                 <table cellpadding='5' cellspacing='5'>
                 <tr>
+                <td>
+                <b>PDF:</b>&nbsp;<input type='file' name='pdf'/>
+            <p class='text-center mt-5'>
+            </p>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                <b>Imagen:</b>&nbsp;<input type='file' name='imagen'/>
+            <p class='text-center mt-5'>
+            </p>
+                </td>
                 </tr>
                     <tr>
                         <td id='btns' colspan='4'>
-                        <input type='submit' value='Enviar' name='btnEnviar' class='btn btn-warning'>
+                        <input type='submit' value='Enviar' name='btnEnviar' class='btn btn-success'>
+            <input type='hidden' name='MAX_FILE_SIZE' value='1'/>
+
                         <input type='reset' value='Borrar' class='btn btn-primary'>
                         </td>
                     </tr>
