@@ -5,7 +5,7 @@
 <html lang="es">
 
 <head>
-    <title></title>
+    <title>LogIN</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -16,15 +16,30 @@
     <?php
         if(isset($_POST['btnEnviar'])){
             $usuarios=[
-                "admin"=> "passadmin",
-                "usuario"=>"passusu"
+                "admin"=> [
+                    "tipo" => "administrador",
+                    "pass" => "admin"
+                ],
+                "usuario"=>[
+                    "tipo" => "usuario normal",
+                    "pass" => "usuario"
+                ],
+                "miguel"=>[
+                    "tipo" => "usuario avanzado",
+                    "pass" => "miguel"
+                ]
             ];
-            $nomUsu=trim($_POST['nombre']);
+            $nomUsu=strtolower(trim($_POST['nombre']));
             $passUsu=trim($_POST['password']);
 
-            if(isset($usuarios[$nomUsu]) && $usuarios[$nomUsu]==$passUsu){
-                $_SESSION['usuario']=$nomUsu;
-                header('Location:portal.php');
+            if(isset($usuarios[$nomUsu]) && $usuarios[$nomUsu]["pass"]==$passUsu){
+                // $_SESSION['usuario']=$nomUsu;
+                // $_SESSION['tipo']=$usuarios[$nomUsu]["tipo"];
+                $_SESSION['user']=[
+                    "name" => $nomUsu,
+                    "tipe" => $usuarios[$nomUsu]["tipo"]
+                ];
+                header('Location:menu.php');
             }else{
                 $_SESSION['error']="El nombre de usuario o la contraseña son Incorrectos!!";
                 header('Location:index.php');
