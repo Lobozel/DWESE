@@ -5,7 +5,7 @@
 <html lang="es">
 
 <head>
-    <title>LogIN</title>
+    <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -76,9 +76,16 @@
                                 </td>
                             </tr>
                             <tr>
+                            <td></td>
+                            <td>
+                            <input type='checkbox' name='recordar'>Recuerdame
+                            </td>
+                            </tr>
+                            <tr>
                                 <td colspan='2' align='center'>
                                     <input type='submit' value='Login' class='btn btn-info' name='btnEnviar' />
                                     <input type='reset' value='Limpiar' class='btn btn-warning' />
+                                    <input type='submit' value='Borrar Cokkies' class='btn btn-danger' name='deleteCookies'/>
                                 </td>
                             </tr>
                         </table>
