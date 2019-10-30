@@ -24,7 +24,7 @@
         die();
     }
     if(isset($_SERVER['WINDIR'])){
-        $dir = substr($dir,2);
+        // $dir = substr($dir,2);
         $dir = str_replace("\\","/",$dir);
     }
     
@@ -60,7 +60,7 @@
         }else{
             if($dir=="/"){
                 ?>
-                <img src='/icons/dir/gif'>
+                <img src='/icons/dir.gif'>
                 <a href='<?php $_SERVER['PHP_SELF']."?dir=/".$nuevoDir ?>' style='text-decoration:none'>
                 <?php echo $nuevoDir ?>
                 </a>
@@ -68,7 +68,7 @@
                 <?php
             }else{
                 ?>
-                <img src='/icons/dir/gif'>
+                <img src='/icons/dir.gif'>
                 <a href='<?php $_SERVER['PHP_SELF']."?dir=".$dir."/".$nuevoDir ?>' style='text-decoration:none'>
                 <?php echo $nuevoDir ?>
                 </a>
