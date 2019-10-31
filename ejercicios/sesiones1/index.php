@@ -1,5 +1,18 @@
 <?php
     session_start();
+
+    if(isset($_COOKIE['user'])){
+        $user=$_COOKIE['user'];
+    }else{
+        $user="";
+    }
+
+    if(isset($_COOKIE['pass'])){
+        $pass=$_COOKIE['pass'];
+    }else{
+        $pass="";
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -33,8 +46,29 @@
             $passUsu=trim($_POST['password']);
 
             if(isset($usuarios[$nomUsu]) && $usuarios[$nomUsu]["pass"]==$passUsu){
-                // $_SESSION['usuario']=$nomUsu;
-                // $_SESSION['tipo']=$usuarios[$nomUsu]["tipo"];
+                
+                //NO RECORDARA LA CONTRASEÑA SI NO RECUERDA AL USUARIO
+
+                if(isset($_POST['rUser'])){
+                    //Si se selecciona recordar Usuario
+                    setcookie('user',$nomUsu,time()+365*24*60*60);
+                    if(isset($_POST['rPass'])){
+                        //Si, estando seleccionado recordar Usuario, se selecciona ademas recordar contraseña
+                        setcookie('pass',$passUsu,time()+365*24*60*60);
+                    }else{
+                        //Si se ha recordado a un usuario y no se ha seleccionado recordar contraseña
+                        if(isset($_COOKIE['pass'])){
+                            //Si recuerda una contraseña, deja de recordarla
+                            setcookie('pass',"",-1);
+                        }
+                    }
+                }
+
+                if(isset($_COOKIE['user']) && isset($_POST['rPass'])){
+                    //Si se recuerda el usuario y se selecciona recordar contraseña
+                    setcookie('pass',$passUsu,time()+365*24*60*60);
+                }
+
                 $_SESSION['user']=[
                     "name" => $nomUsu,
                     "tipe" => $usuarios[$nomUsu]["tipo"]
@@ -48,8 +82,8 @@
 
         
     ?>
-        <div class="container mt-5">
-        <form name='login' action='index.php' method='POST'>
+    <div class="container mt-5">
+        <form name='login' action='<?php echo $_SERVER['PHP_SELF']; ?>' method='POST'>
             <table border='3' bordercolor='red' cellspacing='5' align='center'>
                 <tr>
                     <td>
@@ -64,7 +98,8 @@
                                     <b>Nombre:</b>
                                 </td>
                                 <td>
-                                    <input type='text' name='nombre' placeholder='Nombre' required />
+                                    <input type='text' name='nombre' value='<?php echo $user ?>' class='form-control'
+                                        required />
                                 </td>
                             </tr>
                             <tr>
@@ -72,20 +107,23 @@
                                     <b>Password:</b>
                                 </td>
                                 <td>
-                                    <input type='password' name='password' class='form-control' required />
+                                    <input type='password' name='password' value='<?php echo $pass ?>'
+                                        class='form-control' required />
                                 </td>
                             </tr>
                             <tr>
-                            <td></td>
-                            <td>
-                            <input type='checkbox' name='recordar'>Recuerdame
-                            </td>
+                                <td></td>
+                                <td>
+                                    <input type='checkbox' name='rUser'>Recordar Usuario
+                                    <input type='checkbox' name='rPass'>Recordar Contraseña
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan='2' align='center'>
                                     <input type='submit' value='Login' class='btn btn-info' name='btnEnviar' />
                                     <input type='reset' value='Limpiar' class='btn btn-warning' />
-                                    <input type='submit' value='Borrar Cokkies' class='btn btn-danger' name='deleteCookies'/>
+                                    <a href='borrarCookies.php' style='text-decoration:none'>
+                                        <input type='button' value='Borrar Cokkies' class='btn btn-danger'>&nbsp;&nbsp;</a>
                                 </td>
                             </tr>
                         </table>
@@ -97,13 +135,13 @@
             if(isset($_SESSION['error'])){
         
                 echo "<div class='container mt-5'>".PHP_EOL;
-                echo "<h2 class='text-center text-danger'>".$_SESSION['error']."</h2>".PHP_EOL;
+                echo "<h4 class='text-center text-danger bg-warning'>".$_SESSION['error']."</h4>".PHP_EOL;
                 echo "</div>".PHP_EOL;
                 unset($_SESSION['error']);
             }
         ?>
-            </div>
-        <?php } ?>
-    </body>
+    </div>
+    <?php } ?>
+</body>
 
 </html>

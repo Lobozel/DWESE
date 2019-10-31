@@ -9,6 +9,11 @@
     define("ADMIN","administrador");
     define("NORMAL","usuario normal");
     define("AVANZADO","usuario avanzado");
+
+    if($_SESSION['user']['tipe']==NORMAL){
+        header('Location:menu.php');
+        die();
+    }
     
     function fondo($color){
         echo "<body style='background-color:$color'>".PHP_EOL;
