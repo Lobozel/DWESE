@@ -1,16 +1,26 @@
 <?php
 class Personas{
     static $cant=0;
-    private $nombre;
+    protected $nombre;
     private $edad;
     public $mail;
 
     //----------------
-    public function __construct($n,$e,$m){
+    public function __construct(){
         self::$cant++;
-        $this->nombre=$n;
-        $this->edad=$e;
-        $this->mail=$m;
+        switch(func_num_args()){
+            case 3:
+                $this->mail=func_num_arg(2);
+            case 2:
+                $this->edad=func_num_arg(1);
+            case 1:
+                $this->nombre=func_num_args(0);
+                break;
+            default:
+                $this->nombre="Guest";
+                $this->edad="0";
+                $this->mail='noMail@mail.com';
+        }
     }
 
     /**
@@ -21,16 +31,20 @@ class Personas{
         return $this->nombre;
     }
 
-    /**
-     * Set the value of nombre
-     *
-     * @return  self
-     */ 
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
+    }
 
-        return $this;
+
+    public function getEdad()
+    {
+        return $this->edad;
+    }
+
+    public function setEdad($edad)
+    {
+        $this->edad = $edad;
     }
 
     //metodos mágicos
@@ -52,6 +66,8 @@ class Personas{
     }
 
     public function __toString(){
-        return "$this->nombre, $this->edad, $this->mail";
+        return "<b>Nombre:</b> $this->nombre, <b>Edad:</b> $this->edad, <b>Mail:</b> $this->mail";
     }
+
+    
 }

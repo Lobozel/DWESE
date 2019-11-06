@@ -10,6 +10,7 @@
     <div class="container mt-3">
         <?php
             require('class/Personas.php');
+            require('class/Empleados.php');
             $persona1 = new Personas('Juan Perez',34,'lucas@correo.es');
             $persona2=$persona1;
             $persona2 ->setNombre('Kiko Perez');
@@ -43,7 +44,35 @@
             echo $persona3->edad.PHP_EOL;
             echo "<br>".PHP_EOL;
             echo $persona1;
-
+            //------------------------------------
+            echo "<hr>".PHP_EOL;
+            $empleado = new Empleados('Pedro Gomez',45,'mail@mail.com','Jefe',1234.67);
+            echo $empleado.PHP_EOL;
+            echo "<br>".PHP_EOL;
+            echo Personas::$cant.PHP_EOL;
+            echo "<hr>".PHP_EOL;
+            $empleado->setNombre("Pedrito Gomez");
+            echo $empleado->getNombre().PHP_EOL;
+            //-------------------------
+            // $empleado->nombre='Juan sebastian';
+            // echo "<br>".PHP_EOL;
+            // echo $empleado->nombre.PHP_EOL;
+            $empleado->mail='elmail@cambiado.es';
+            echo "<br>".PHP_EOL;
+            echo $empleado->mail.PHP_EOL;
+            //---------------
+            echo "<br>".PHP_EOL;
+            $empleado->setNombre('Perico');
+            echo $empleado;
+            //-------------
+            echo "<br>".PHP_EOL;
+            $empleado->setEdad('28');
+            echo $empleado;
+            //
+            echo "<br>".PHP_EOL;
+            if($empleado->isJefe()){
+                echo "El empleado: ".$empleado->getNombre()." es jefazo".PHP_EOL;
+            }
         ?>
     </div>
     </body>
