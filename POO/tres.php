@@ -41,7 +41,8 @@
             echo "<hr>".PHP_EOL;
             $persona3->edad=123;
             echo $persona3->edad.PHP_EOL;
-
+            echo "<br>".PHP_EOL;
+            echo $persona1;
 
         ?>
     </div>

@@ -50,4 +50,8 @@ class Personas{
             return "La propiedad <b>$p</b> No existe en esta clase!!!";
         }
     }
+
+    public function __toString(){
+        return "$this->nombre, $this->edad, $this->mail";
+    }
 }
