@@ -10,17 +10,14 @@ class Coches{
     static $cant=0;
 
     function __construct($marca,$modelo,$matricula,$kms=0,$precio=5000){
-        if(preg_match('/[0-9]{4}-[a-z]{3}/',$matricula)){
+        if($this->validarMatricula($matricula)){
             self::$cant++;
             $this->marca=$marca;
             $this->matricula=$matricula;
             $this->modelo=$modelo;
             $this->kms=$kms;
             $this->precio=$precio;
-        }else{
-            return "<h3 class='text-danger'>La matricula $matricula no es válida.</h3>".PHP_EOL;
-        }
-        
+        }        
     }
 
     //GETTERS AND SETTERS
@@ -56,15 +53,11 @@ class Coches{
 
     public function setMatricula($matricula)
     {
-        if(preg_match('/[0-9]{4}-[a-z]{3}/',$matricula)){
+        if($this->validarMatricula($matricula)){
             $this->matricula = $matricula;
 
             return $this;
-        }else{
-            return "<h3 class='text-danger'>La matricula $matricula no es válida.</h3>".PHP_EOL;
-
-        }
-        
+        }        
     }
 
     public function getKms()
@@ -114,5 +107,17 @@ class Coches{
         <b>Precio: </b>$this->precio<br>
         <b>Descuento: </b>".self::$descuento."
         </div>";
+    }
+
+    /**
+     * Validar Matrícula
+     */
+    function validarMatricula($matricula){
+        if(preg_match('/[0-9]{4}-[a-z]{3}/',$matricula)){
+            return true;
+        }else{
+            echo "<h3 class='text-danger'>La matricula $matricula no es válida.</h3>".PHP_EOL;
+            return false;
+        }
     }
 }

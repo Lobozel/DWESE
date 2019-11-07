@@ -15,15 +15,18 @@
 
         for($i=0;$i<10;$i++){
             $marca=$marcas[rand(0,count($marcas)-1)];
-            $coches[$i]=new Coches($marca,'Modelo',generarMatriculaRandom(),rand(0,1001),rand(4000,10001));
+            $coches[$i]=new Coches($marca,'Modelo',generarMatriculaRandom(),rand(0,1000),rand(4000,10000));
+
+            //Si el coche está vacio (compruebo a través de la falta de matrícula) lo elimino del array
+            if($coches[$i]->getMatricula()==null){
+                unset($coches[$i]);
+            }
         }
 
-        for($i=0;$i<10;$i++){
+        for($i=0;$i<count($coches);$i++){
             echo $coches[$i].PHP_EOL;
             echo "<br>".PHP_EOL;
         }
-
-
 
         function generarMatriculaRandom(){
             
