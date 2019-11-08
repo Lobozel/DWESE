@@ -86,7 +86,7 @@ class Coches{
 
     public function getDescuento()
     {
-        return $this->descuento;
+        return self::$descuento;
     }
 
     public function setDescuento($descuento)
@@ -104,8 +104,7 @@ class Coches{
         <b>Modelo: </b>$this->modelo<br>
         <b>Matricula: </b>$this->matricula<br>
         <b>Kms: </b>$this->kms<br>
-        <b>Precio: </b>$this->precio<br>
-        <b>Descuento: </b>".self::$descuento."
+        <b>Precio: </b>$this->precio
         </div>";
     }
 
