@@ -17,7 +17,7 @@ class CochesVendidos{
             $this->matricula=$matricula;
             $this->kms=$kms;
             $descuento = Coches::getDescuento();
-            $this->precio_venta=$precio-$precio/$descuento;
+            $this->precio_venta=$precio-($precio*$descuento/100);
             $this->fecha_venta=$fecha_venta;
         }        
     }
