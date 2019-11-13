@@ -13,6 +13,25 @@
         $pass="";
     }
 
+    function buscarUsuario($user, $pass){
+        $file = fopen("usuarios/usuarios.txt",'r');
+
+        while(!feof($file)) {
+
+            $contenido = explode('::',fgets($file));
+                if($contenido[0]==$user){
+                    $password = hash('sha256',$pass);
+                    if(trim($contenido[2])==trim($password)){
+                        fclose($file);
+                        return true;
+                    }
+                }
+            }
+
+        fclose($file);
+        return false;
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -27,59 +46,27 @@
 
 <body style='background-color:aqua'>
     <?php
-        if(isset($_POST['btnEnviar'])){
-            $usuarios=[
-                "admin"=> [
-                    "tipo" => "administrador",
-                    "pass" => "admin"
-                ],
-                "usuario"=>[
-                    "tipo" => "usuario normal",
-                    "pass" => "usuario"
-                ],
-                "miguel"=>[
-                    "tipo" => "usuario avanzado",
-                    "pass" => "miguel"
-                ]
-            ];
+        if(isset($_POST['login'])){
+
             $nomUsu=strtolower(trim($_POST['nombre']));
             $passUsu=trim($_POST['password']);
 
-            if(isset($usuarios[$nomUsu]) && $usuarios[$nomUsu]["pass"]==$passUsu){
+            if(buscarUsuario($nomUsu,$passUsu)){
                 
-                //NO RECORDARA LA CONTRASEÑA SI NO RECUERDA AL USUARIO
-
-                if(isset($_POST['rUser'])){
-                    //Si se selecciona recordar Usuario
+                if(isset($_POST['recordar'])){
                     setcookie('user',$nomUsu,time()+365*24*60*60);
-                    if(isset($_POST['rPass'])){
-                        //Si, estando seleccionado recordar Usuario, se selecciona ademas recordar contraseña
-                        setcookie('pass',$passUsu,time()+365*24*60*60);
-                    }else{
-                        //Si se ha recordado a un usuario y no se ha seleccionado recordar contraseña
-                        if(isset($_COOKIE['pass'])){
-                            //Si recuerda una contraseña, deja de recordarla
-                            setcookie('pass',"",-1);
-                        }
-                    }
-                }
-
-                if(isset($_COOKIE['user']) && isset($_POST['rPass'])){
-                    //Si se recuerda el usuario y se selecciona recordar contraseña
                     setcookie('pass',$passUsu,time()+365*24*60*60);
                 }
 
-                $_SESSION['user']=[
-                    "name" => $nomUsu,
-                    "tipe" => $usuarios[$nomUsu]["tipo"]
-                ];
-                header('Location:menu.php');
+                $_SESSION['user']=$nomUsu;
+
+                header('Location:portal.php');
+                die();
             }else{
                 $_SESSION['error']="El nombre de usuario o la contraseña son Incorrectos!!";
                 header('Location:index.php');
             }
         }else{
-
         
     ?>
     <div class="container mt-5">
@@ -114,16 +101,17 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <input type='checkbox' name='rUser'>Recordar Usuario
-                                    <input type='checkbox' name='rPass'>Recordar Contraseña
+                                    <input type='checkbox' name='recordar'>Recuerdame
+                                    <a href='borrarCookies.php' style='text-decoration:none'>
+                                        <input type='button' value='Olvidar Usuario' class='btn btn-danger'>&nbsp;&nbsp;</a>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan='2' align='center'>
-                                    <input type='submit' value='Login' class='btn btn-info' name='btnEnviar' />
+                                    <input type='submit' value='Iniciar Sesión' class='btn btn-success' name='login' />
                                     <input type='reset' value='Limpiar' class='btn btn-warning' />
-                                    <a href='borrarCookies.php' style='text-decoration:none'>
-                                        <input type='button' value='Borrar Cokkies' class='btn btn-danger'>&nbsp;&nbsp;</a>
+                                    <a href='sigin.php' style='text-decoration:none'>
+                                        <input type='button' value='Registrarse' class='btn btn-info'>&nbsp;&nbsp;</a>                               
                                 </td>
                             </tr>
                         </table>
