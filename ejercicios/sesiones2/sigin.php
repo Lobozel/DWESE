@@ -19,6 +19,13 @@
             $nomUsu = strtolower(trim($_POST['nombre']));
             $mail = trim($_POST['email']);
             $pass = trim($_POST['password']);
+            $conf = trim($_POST['confPassword']);
+
+            if($pass!=$conf){
+                $_SESSION['error']="Las contraseñas no coinciden.";
+                header('Location:sigin.php');
+                die();
+            }
                       
             $file = fopen("usuarios/usuarios.txt", "a+");
 
@@ -86,10 +93,19 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <b>Password: </b><font color='red'>*</font>
+                                    <b>Contraseña: </b><font color='red'>*</font>
                                 </td>
                                 <td>
                                     <input type='password' name='password'
+                                        class='form-control' required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Confirmar Contraseña: </b><font color='red'>*</font>
+                                </td>
+                                <td>
+                                    <input type='password' name='confPassword'
                                         class='form-control' required />
                                 </td>
                             </tr>
