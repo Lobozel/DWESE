@@ -27,12 +27,14 @@
             $contenido = explode('::',fgets($file));
                 if($contenido[0]==$nomUsu){
                     $_SESSION['error']="Ese nombre esta cogido!!";
+                    fclose($file);
                     header('Location:sigin.php');
                     die();
                 }
     
                 if(trim($contenido[1])==$mail){
                     $_SESSION['error']="Ya existe una cuenta registrada con ese email.";
+                    fclose($file);
                     header('Location:sigin.php');
                     die();                    
                 }
@@ -93,7 +95,9 @@
                             </tr>
                             <tr>
                                 <td colspan='2' align='center'>
-                                    <input type='submit' value='Registrarse' class='btn btn-info' name='sigin'/>                                
+                                    <input type='submit' value='Registrarse' class='btn btn-success' name='sigin'/>
+                                    <a href='index.php' style='text-decoration:none'>
+                                        <input type='button' value='Volver' class='btn btn-info'>&nbsp;&nbsp;</a>                                 
                                 </td>
                             </tr>
                         </table>
