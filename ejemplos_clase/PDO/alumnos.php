@@ -57,7 +57,7 @@
                             <td>
                             <form name='as' action='balumno.php' method='POST' style='display:inline'>
                             <input type='hidden' name='id' value='{$alumno->idAl}'>
-                            <a href='ealumnos.php?id={$alumno->idAl}' class='btn btn-info'>Editar</a>&nbsp;
+                            <a href='ealumno.php?id={$alumno->idAl}' class='btn btn-info'>Editar</a>&nbsp;
                             <input type='submit' value='Borrar' class='btn btn-danger'>
                             </form>
                             </td>
