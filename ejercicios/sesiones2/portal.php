@@ -7,7 +7,7 @@
     }
 
     if(isset($_COOKIE['lastSession'.$_SESSION['user']])){
-        $_SESSION['mensaje']=$_COOKIE['lastSession'];
+        $_SESSION['mensaje']=$_COOKIE['lastSession'.$_SESSION['user']];
     }else{
         $_SESSION['mensaje']='Es tu primera visita';
     }
