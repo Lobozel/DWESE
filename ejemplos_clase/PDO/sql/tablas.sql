@@ -35,3 +35,16 @@ insert into alumnos(nomAl, apeAl, mail) values('Ines', 'Fernandez Sanz', 'correo
 insert into modulos(nomMod, horasSem) values('DWESE',8);
 insert into modulos(nomMod, horasSem) values('HLC',3);
 insert into modulos(nomMod, horasSem) values('DWECL',6);
+
+-- Algunas Matriculas
+insert into matriculas values(1,1,0);
+insert into matriculas values(1,2,0);
+insert into matriculas values(1,3,0);
+insert into matriculas values(6,1,0);
+insert into matriculas values(6,2,0);
+insert into matriculas values(6,3,0);
+insert into matriculas values(3,1,0);
+insert into matriculas values(3,2,0);
+insert into matriculas values(3,3,0);
+insert into matriculas values(4,1,0);
+insert into matriculas values(4,2,0);
