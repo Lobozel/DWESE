@@ -20,7 +20,17 @@ class Matriculas{
     }
     /////////////////CRUD
     public function create(){
-
+        $c="insert into matriculas values(:a, :m, :n)";
+        $stmt=$this->conector->prepare($c);
+        try{
+            $stmt->execute([
+                ':a'=>$this->al,
+                ':m'=>$this->modulo,
+                ':n'=>$this->notaFinal
+            ]);
+        }catch(PDOException $ex){
+            die("Error al matricular Alumno!! ".$ex);
+        }
     }
     public function read(){
         $cons="select al, modulo, nomAl, apeAl, nomMod, notaFinal from alumnos, modulos, matriculas where idAl=al AND modulo=idMod order by apeAl, nomMod";
@@ -34,7 +44,17 @@ class Matriculas{
         return $todos;
     }
     public function update(){
-
+        $u="update matriculas set notaFinal=:n where al=:a AND modulo=:m";
+        $stmt=$this->conector->prepare($u);
+        try{
+            $stmt->execute([
+                ':a'=>$this->al,
+                ':m'=>$this->modulo,
+                ':n'=>$this->notaFinal
+            ]);
+        }catch(PDOException $ex){
+            die("Error al modificar la matricula: ".$ex);
+        }
     }
     public function delete(){
         $borrar = 'delete from matriculas where al=:a AND modulo=:m';
@@ -49,6 +69,38 @@ class Matriculas{
         }
     }
     //--------------------getters, setters and others
+    public function existeMatricula($a, $m){
+        $consulta="select * from matriculas where al=:a AND modulo=:m";
+        $stmt=$this->conector->prepare($consulta);
+        try{
+            $stmt->execute([
+                ':a'=>$a,
+                ':m'=>$m
+            ]);
+        }catch(PDOException $ex){
+            die("Error al comprobar matricula: ".$ex);
+        }
+        $cont=0;
+        while($fila=$stmt->fetch()){
+            $cont++;
+        }
+        return ($cont!=0);
+    }
+
+    public function getMatricula($al, $mod){
+        $cons="select al, modulo, nomAl, apeAl, nomMod, horasSem, notaFinal from alumnos, modulos, matriculas where idAl=:a AND modulo=:m";
+        $stmt=$this->conector->prepare($cons);
+        try{
+            $stmt->execute([
+                ':a'=>$al,
+                ':m'=>$mod
+            ]);
+        }catch(PDOException $ex){
+            die("Error al recuperar matriculas: ".$ex);
+        }
+        $fila=$stmt->fetch(PDO::FETCH_OBJ);
+        return $fila;
+    }
 
     public function setAl($al)
     {

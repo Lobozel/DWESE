@@ -25,7 +25,7 @@
 <body style="background-color:salmon">
     <h3 class="text-center mt-4">Crud Matriculas</h3>
     <div class="container mt-3">
-        <a href="cmodulo.php" class="btn btn-success mb-3">Nueva Matricula</a>
+        <a href="cmatricula.php" class="btn btn-success mb-3">Nueva Matricula</a>
         <?php
             if(isset($_SESSION['mensaje'])){
                 echo "<h3 class='mt-3 mb-3 text-info'>
@@ -56,7 +56,7 @@
                     <form name='as' action='bmatricula.php' method='POST' style='display:inline'>
                             <input type='hidden' name='al' value='{$fila->al}'>
                             <input type='hidden' name='mod' value='{$fila->modulo}'>
-                            <a href='ematricula.php?al={$fila->al}?mod={$fila->modulo}' class='btn btn-info'>Editar</a>&nbsp;
+                            <a href='ematricula.php?al={$fila->al}&mod={$fila->modulo}' class='btn btn-info'>Editar</a>&nbsp;
                             <input type='submit' value='Borrar' class='btn btn-danger'>
                             </form>
                     </td>
