@@ -8,7 +8,18 @@
     $conexion = new Conexion();
     $miLLave = $conexion->getConector();
     $matricula = new Matriculas($miLLave);
-    $filas=$matricula->read();
+    $totalReg=$matricula->getTotal();
+    $paginacion=4;
+    $totalPag=intdiv($totalReg, $paginacion);
+    if($totalReg%$paginacion!=0){
+        $totalPag+=1;
+    }
+    if(!isset($_GET['pag'])){
+        $inicio=0;
+    }else{
+        $inicio=$paginacion*($_GET['pag']-1);
+    }
+    $filas=$matricula->read($inicio,$paginacion);
     
 ?>
 <html lang="es">
@@ -66,6 +77,34 @@
             ?>
             </tbody>
         </table>
+        <div class="container mt-4">
+        
+        <!-- <b>Página:</b> -->
+        <?php
+            echo "|<a href='matriculas.php?pag=1' style='text-decoration:none'>&nbsp;&nbsp;|<</a>&nbsp;&nbsp;|";
+            if(isset($_GET['pag']) && $_GET['pag']!=1){
+                $anterior=$_GET['pag']-1;
+            }else{
+                $anterior=1;
+            }
+            echo "<a href='matriculas.php?pag=".$anterior."' style='text-decoration:none'>&nbsp;&nbsp;<</a>&nbsp;&nbsp;|";
+            for($i=1;$i<=$totalPag;$i++){
+                echo "<a href='matriculas.php?pag=$i' style='text-decoration:none'>&nbsp;&nbsp;$i</a>&nbsp;&nbsp;|";
+            }
+            if(isset($_GET['pag'])){
+                if($_GET['pag']!=$totalPag){
+                    $siguiente=$_GET['pag']+1;
+                }else{
+                    $siguiente=$totalPag;
+                }
+            }else{
+                $siguiente=2;
+            }
+            echo "<a href='matriculas.php?pag=".$siguiente."' style='text-decoration:none'>&nbsp;&nbsp;></a>&nbsp;&nbsp;|";
+            echo "<a href='matriculas.php?pag=".$totalPag."' style='text-decoration:none'>&nbsp;&nbsp;>|</a>&nbsp;&nbsp;|";
+        ?>
+        
+        </div>
     </div>
 </body>
 
