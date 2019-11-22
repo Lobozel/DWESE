@@ -112,6 +112,12 @@
                                                 echo "</div>".PHP_EOL;
                                                 unset($_SESSION['error']);
                                             }
+                                            if(isset($_SESSION['mensaje'])){
+                                                echo "<div>".PHP_EOL;
+                                                echo "<h4 class='text-center text-primary bg-success'>".$_SESSION['mensaje']."</h4>".PHP_EOL;
+                                                echo "</div>".PHP_EOL;
+                                                unset($_SESSION['mensaje']);
+                                            }
                                         ?>
                                     </div>
                                 </form>
