@@ -1,26 +1,15 @@
 <?php
     session_start();
 
-    // function buscarUsuario($user, $pass){
-    //     $file = fopen("usuarios/usuarios.txt",'r');
+    spl_autoload_register(function($clase){
+        require "./class/".$clase.".php";
+    });
 
-    //     while(!feof($file)) {
-
-    //         $contenido = explode('::',fgets($file));
-    //             if($contenido[0]==$user){
-    //                 $password = hash('sha256',$pass);
-    //                 if(trim($contenido[2])==trim($password)){
-    //                     fclose($file);
-    //                     return true;
-    //                 }
-    //             }
-    //         }
-
-    //     fclose($file);
-    //     return false;
-    // }
-
-
+    function error($txt){
+        $_SESSION['error']=$txt;
+        header('Location:index.php');
+        die();
+    }
 
         $nomUsu=strtolower(trim($_POST['username']));
         $passUsu=trim($_POST['password']);
@@ -35,8 +24,7 @@
             echo "Has iniciado con éxito";
             
         }else{
-            $_SESSION['error']="El nombre de usuario o la contraseña son Incorrectos!!";
-            header('Location:index.php');
+            error("El nombre de usuario o la contraseña son Incorrectos!!");
         }
 
     

@@ -22,9 +22,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="js/inicio.js"></script>
+    <script src="js/login.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
 
 </head>
 
@@ -58,7 +58,7 @@
                                                 <img src="icons/user.png">
                                             </div>
                                             <input type="text" name="username" id="username" tabindex="1"
-                                                class="form-control" placeholder="Usuario" value="<?php echo $user; ?>">
+                                                class="form-control" placeholder="Usuario" value="<?php echo $user; ?>" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -68,7 +68,7 @@
                                             </div>
                                             <input type="password" name="password" id="password" tabindex="2"
                                                 class="form-control form-control-lg" placeholder="Contraseña"
-                                                value="<?php echo $pass; ?>">
+                                                value="<?php echo $pass; ?>" required>
                                             <div class="input-group-addon">
                                                 <button id="eye" style="height: 30px;" class="btn btn-sm"
                                                     type="button"><img id="eye_icon" src="icons/eye.png"></button>
@@ -123,7 +123,7 @@
                                                 <img src="icons/user.png">
                                             </div>
                                             <input type="text" name="usernameR" id="usernameR" tabindex="1"
-                                                class="form-control" placeholder="Usuario" value="">
+                                                class="form-control" placeholder="Usuario" value="" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -141,7 +141,7 @@
                                                 <img src="icons/key.png">
                                             </div>
                                             <input type="password" name="password_R" id="password_R" tabindex="2"
-                                                class="form-control" placeholder="Contraseña">
+                                                class="form-control" placeholder="Contraseña" required>
                                             <div class="input-group-addon">
                                                 <button id="eye_R" style="height: 30px;" class="btn btn-sm"
                                                     type="button"><img id="eye_icon_R" src="icons/eye.png"></button>
@@ -154,7 +154,7 @@
                                                 <img src="icons/key.png">
                                             </div>
                                             <input type="password" name="confirm-password" id="confirm-password"
-                                                tabindex="2" class="form-control" placeholder="Confirmar Contraseña">
+                                                tabindex="2" class="form-control" placeholder="Confirmar Contraseña" required>
                                             <div class="input-group-addon">
                                                 <button id="confirm-eye" style="height: 30px;" class="btn btn-sm"
                                                     type="button"><img id="confirm-eye_icon"
