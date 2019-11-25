@@ -30,7 +30,8 @@
             $_SESSION['nombre']=$nomUsu;
             $_SESSION['perfil']=$usuario->isOk();
 
-            echo "Has iniciado con éxito";
+            header('Location:portal.php');
+            die();
 
         }else{
             error("El nombre de usuario o la contraseña son Incorrectos!!");

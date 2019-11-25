@@ -237,7 +237,7 @@
         5=>"'valor 5 array2'"
     ];
     echo "<br>Mat1<br>";
-    print_r()
+    print_r();
 
     echo "<br><br>".PHP_EOL;
     ?>
