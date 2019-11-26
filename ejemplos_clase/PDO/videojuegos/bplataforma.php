@@ -4,6 +4,10 @@ if(!isset($_POST['id'])){
     die();
 }
 session_start();
+if(!isset($_SESSION['nombre']) || $_SESSION['perfil']!=100){
+    header('Location:portal.php');
+    die();
+}
 spl_autoload_register(function($clase){
     require "./class/".$clase.".php";
 });
