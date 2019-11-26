@@ -83,7 +83,11 @@ if(isset($_SESSION['mensaje'])){
       <th scope="col">Código</th>
       <th scope="col">Nombre</th>
       <th scope="col">Imagen</th>
-      <th scope="col">Accones</th>
+      <?php
+      if($perfil==100){
+        echo "<th scope='col'>Accones</th>";
+      }
+      ?>
     </tr>
   </thead>
   <tbody>
@@ -93,13 +97,15 @@ if(isset($_SESSION['mensaje'])){
         <th scope='row'>{$item->id}</th>
         <td>{$item->nombre}</td>
         <td><img src='{$item->imagen}' width='80px' height='80px'></td>
-        <td>
-        <form name='as' action='bplataforma.php' method='POST' style='display:inline'>
-                            <input type='hidden' name='al' value='#'>
-                            <a href='eplataforma.php?X=#' class='btn btn-info'>Editar</a>&nbsp;
-                            <input type='submit' value='Borrar' class='btn btn-danger'>
-                            </form>
-        </td>
+        <td>";
+        if($perfil==100){
+          echo "<form name='as' action='bplataforma.php' method='POST' style='display:inline'>
+          <input type='hidden' name='id' value='{$item->id}'>
+          <a href='eplataforma.php?id={$item->id}' class='btn btn-info'>Editar</a>&nbsp;
+          <input type='submit' value='Borrar' class='btn btn-danger'>
+          </form>";
+        }         
+        echo "</td>
       </tr>";
     }
   ?>

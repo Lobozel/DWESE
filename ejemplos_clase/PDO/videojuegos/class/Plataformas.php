@@ -45,10 +45,42 @@ class Plataformas{
         return $plataformas;
     }
     public function update(){
-
+        $u="update plataformas set nombre=:n, imagen=:i where id=:id";
+        $stmt=$this->conector->prepare($u);
+        try{
+            $stmt->execute([
+                ':n'=>$this->nombre,
+                ':i'=>$this->imagen,
+                ':id'=>$this->id
+            ]);
+        }catch(PDOException $ex){
+            die("Error al actualizar la plataforma: ".$ex);
+        }
     }
     public function delete(){
-
+        $b = 'delete from plataformas where id=:i';
+        $stmt=$this->conector->prepare($b);
+        try{
+            $stmt->execute([
+                ':i'=>$this->id
+            ]);
+        }catch(PDOException $ex){
+            die("Error al borrar la plataforma: ".$ex);
+        }
+    }
+    //getPlataforma----------
+    public function getPlataforma($id){
+        $c="select * from plataformas where id=:i";
+        $stmt=$this->conector->prepare($c);
+        try{
+            $stmt->execute([
+                ':i'=>$id
+            ]);
+        }catch(PDOException $ex){
+            die("Error al recuperar la plataforma: ".$ex);
+        }
+        $plataforma=$stmt->fetch(PDO::FETCH_OBJ);
+        return $plataforma;
     }
     //setters----------------
     public function setId($i){

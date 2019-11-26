@@ -1,9 +1,15 @@
 <?php
+if(!isset($_GET['id'])){
+    header('Location:plataformas.php');
+    die();
+}
 session_start();
 if(!isset($_SESSION['nombre']) || $_SESSION['perfil']!=100){
     header('Location:portal.php');
     die();
 }
+ob_start(); //empieza captura de salida
+
 $nombre=$_SESSION['nombre'];
 
 spl_autoload_register(function($clase){
@@ -12,12 +18,30 @@ spl_autoload_register(function($clase){
 
 function error($txt){
     $_SESSION['error']=$txt;    
-    header('Location:cplataforma.php');
+    header('Location:eplataforma.php'."?id={$_GET['id']}");
     die();
 }
 
 $conexion=new Conexion();
 $llave=$conexion->getConector();
+$plataforma=new Plataformas($llave);
+$miPlataforma=$plataforma->getPlataforma($_GET['id']);
+
+    function editarPlataforma($n,$i){
+        global $plataforma;
+
+        $plataforma->setId($_GET['id']);
+        $plataforma->setNombre($n);
+        $plataforma->setImagen($i);
+
+        $plataforma->update();
+
+        $llave->null;
+
+        $_SESSION['mensaje']='Plataforma editada con éxito';
+        header('Location:plataformas.php');
+        die();
+    }
 
 ?>
 <!DOCTYPE html>
@@ -61,9 +85,15 @@ $llave=$conexion->getConector();
   </div>
 </nav>   
 
-<h1 class='shadow-lg p-3 bg-white rounded text-center text-info mt-3 text-weight-bold'>Crear Plataforma</h1>
+<h1 class='shadow-lg p-3 bg-white rounded text-center text-info mt-3 text-weight-bold'>Editar Plataforma</h1>
 
 <?php
+if(isset($_SESSION['error'])){
+    echo "<div>".PHP_EOL;
+    echo "<h4 class='text-center text-danger bg-warning'>".$_SESSION['error']."</h4>".PHP_EOL;
+    echo "</div>".PHP_EOL;
+    unset($_SESSION['error']);
+}
     if(isset($_POST['btnEnviar'])){
         //Procesamos
         $nom=trim($_POST['nom']);
@@ -88,20 +118,30 @@ $llave=$conexion->getConector();
             //he subido un archivo y el tipo mime es el adecuado
             $id=time();
             $nombreFich="./recursos/img/$id-".$_FILES['imagen']['name'];
+            //borrar imagen anterior, si no es la genérica
+            if($miPlataforma->imagen!='recursos/img/consola.jpeg'){
+                unlink($miPlataforma->imagen);
+            }
             move_uploaded_file($_FILES['imagen']['tmp_name'],$nombreFich);
         }else{
-            $nombreFich='recursos/img/consola.jpeg';
+            $nombreFich=$miPlataforma->imagen;
         }
-                            //Conector, Nombre Plataforma, Nombre Fichero
-        $plataforma = new Plataformas($llave, $nom, $nombreFich);
-        $plataforma->create();
-        $_SESSION['mensaje']="Plataforma creada correctamente";
-        $llave->null;
-        header('Location:plataformas.php');
-        die();
-
+        editarPlataforma($nom,$nombreFich);
     }else{
 ?>
+
+<script>
+function mostrarInput() {
+  elem = document.getElementById("inputImage");
+
+  if(elem.style.display=='none'){
+    elem.style.display='block';
+  }else{
+    elem.style.display='none';
+  }
+
+}
+</script>
 
 <div class="container mt-3">
 <?php
@@ -112,15 +152,24 @@ $llave=$conexion->getConector();
         unset($_SESSION['error']);
     }
 ?>
-<form name='a' action='<?php echo $_SERVER['PHP_SELF']; ?>' method='POST' enctype='multipart/form-data'>
+<form name='a' action='<?php echo $_SERVER['PHP_SELF']."?id={$_GET['id']}"; ?>' method='POST' enctype='multipart/form-data'>
   <div class="form-group">
     <label for="nom"><b>Nombre:</b></label>
-    <input type="text" class="form-control" name="nom" id="nom" placeholder="Nombre Plataforma">
+    <input type="text" class="form-control" name="nom" id="nom" value="<?php echo $miPlataforma->nombre; ?>" placeholder="Nombre Plataforma">
   </div>
+  <div class="form-group">     
+    <img title="<?php echo $miPlataforma->nombre; ?>" src="<?php echo $miPlataforma->imagen; ?>" width='400px' height='400px'>
+  </div>
+  <button id="changeImage" onclick="mostrarInput()" type="button" class="btn btn-warning">Cambiar Imágen</button>  
+  <div id="inputImage" style="display:none;" class="form-group">
   <b>Imagen:</b>&nbsp;
     <input type="file" class="form-control" name="imagen">
-  <button type="submit" name='btnEnviar' class="btn btn-success mt-3">Crear</button>&nbsp;
-  <button type="reset" class="btn btn-primary mt-3">Limpiar</button>
+  </div>  
+    <div class="form-group mt-3 mb-3">
+    <button type="submit" name='btnEnviar' class="btn btn-success">Conservar Cambios</button>&nbsp;
+  <button type="reset" class="btn btn-warning">Eliminar Cambios</button>  
+    </div>
+  
 </form>
 </div>
 <?php } ?>
