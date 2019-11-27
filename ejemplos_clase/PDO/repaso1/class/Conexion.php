@@ -12,7 +12,7 @@ class Conexion{
         $this->pass='secreto';
         $this->database='prueba27';
         $this->host='localhost';
-        $this->dns="mysql:host={$this->host};dbname={$this->database};charset=utf8";
+        $this->dsn="mysql:host={$this->host};dbname={$this->database};charset=utf8";
     }
 
     public function getConector(){

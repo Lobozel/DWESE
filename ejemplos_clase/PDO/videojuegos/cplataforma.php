@@ -96,7 +96,7 @@ $llave=$conexion->getConector();
         $plataforma = new Plataformas($llave, $nom, $nombreFich);
         $plataforma->create();
         $_SESSION['mensaje']="Plataforma creada correctamente";
-        $llave->null;
+        $llave=null;
         header('Location:plataformas.php');
         die();
 

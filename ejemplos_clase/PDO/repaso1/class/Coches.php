@@ -5,16 +5,20 @@ class Coches{
     private $marca;
     private $modelo;
     private $color;
+    private $kmts;
 
     function __construct(){
-        $num=func_get_args();
+        $num=func_num_args();
         if($num>=1){
             $this->conector=func_get_arg(0);
         }
-        if($num==4){
+        if($num>=4){
             $this->marca=func_get_arg(1);
             $this->modelo=func_get_arg(2);
             $this->color=func_get_arg(3);
+        }
+        if($num==5){
+            $this->kmts=func_get_arg(4);
         }
     }
 
@@ -58,7 +62,7 @@ class Coches{
         }
     }
     public function delete(){
-        $d="delete from coches where id=i";
+        $d="delete from coches where id=:i";
         $stmt=$this->conector->prepare($d);
         try{
             $stmt->execute([
@@ -83,6 +87,9 @@ class Coches{
         return $coches;
     }
     //setters
+    public function setId($i){
+        $this->id=$i;
+    }
     public function setMarca($m){
         $this->marca=$m;
     }
@@ -91,5 +98,8 @@ class Coches{
     }
     public function setColor($c){
         $this->color=$c;
+    }
+    public function setKmts($k){
+        $this->kmts=$k;
     }
 }
