@@ -11,10 +11,15 @@ spl_autoload_register(function($clase){
     require "./class/".$clase.".php";
 });
 
+function miToken(){
+  return bin2hex(random_bytes(12));
+}
+
 $conexion=new Conexion();
 $llave=$conexion->getConector();
 $plataforma=new Plataformas($llave);
 $todas=$plataforma->read();
+$_SESSION['token']=miToken();
 
 ?>
 <!DOCTYPE html>
@@ -61,8 +66,10 @@ if($perfil==100){
 }
       ?>
     </ul>
-    <a class="navbar-brand btn btn-warning" href="cerrarsession.php">Cerrar Sessión</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">  
+    <form name='as' action='cerrarsession.php' method='POST'>
+    <input type='hidden' name='token' value='<?php echo $_SESSION['token']; ?>'>
+    <input type='submit' class='navbar-brand btn btn-warning' value='cerrar Sessión'>
+    </form>  
   </div>
 </nav>   
 
@@ -112,6 +119,6 @@ if(isset($_SESSION['mensaje'])){
   </tbody>
 </table>
 </div>
-
+<?php echo "<br>".miToken()."<br>"; ?>
     </body>
 </html>
