@@ -6,12 +6,9 @@ class Producto{
     private $precio;
     private $idFabr;
 
-    public function __construc(){
+    public function __construct(){
         $num=func_num_args();
         if($num==4){
-            if(idFabrExits(func_get_arg(3))){
-                die("No existe ningún fabricante con el código ".func_get_arg(3));
-            }
             $this->nombre=func_get_arg(1);
             $this->precio=func_get_arg(2);
             $this->idFabr=func_get_arg(3);
@@ -93,28 +90,24 @@ class Producto{
         $this->precio=$p;
     }
     public function setIdFabr($i){
-        if(idFabrExits($i)){
-            die("No existe ningún fabricante con el código ".func_get_arg(3));
-        }
         $this->idFabr=$i;
     }
+    public function setId($i){
+        $this->id=$i;
+    }
     //TOOLS
-    public function idFabrExits($id){
-        $q="select * from fabricante where codigo=:i";
-        $stmt=$this->llave->prepare($q);
+    public function ofFabricante($idFabr){
+        $q="select * from producto where codigo_fabricante=:i order by nombre, precio";
+        $stmt=$this->conector->prepare($q);
         try{
             $stmt->execute([
-                ':i'=>$id;
+                ':i'=>$idFabr
             ]);
         }catch(PDOException $ex){
-            die("Error al buscar el fabricante!! ".$ex);
+            die("Error al recuperar productos ".$ex);
         }
-        $cont=0;
-        while($fila=$stmt->fetch(PDO::FETCH__ASSOC)){
-            $cont++;
-        }
-        return ($cont!=0);
-        //True if $cont es !=0, false if $cont == 0
+        $filas=$stmt->fetchAll(PDO::FETCH_OBJ);
+        return $filas;
     }
 
 }

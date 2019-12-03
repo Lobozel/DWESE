@@ -63,7 +63,7 @@ class Fabricante{
     //GETTERS
     public function getFabricante(){
         $q="select * from fabricante where codigo=:i";
-        $stmt->$this->conector->prepare($q);
+        $stmt=$this->conector->prepare($q);
         try{
             $stmt->execute([
                 ':i'=>$this->id
@@ -77,5 +77,8 @@ class Fabricante{
     //SETTERS
     public function setNombre($n){
         $this->nombre=$n;
+    }
+    public function setId($i){
+        $this->id=$i;
     }
 }
