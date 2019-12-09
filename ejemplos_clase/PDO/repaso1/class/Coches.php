@@ -48,7 +48,7 @@ class Coches{
         }
     }
     public function update(){
-        $u="update coches set marca=:m, modelo=md, color=:c where id=i";
+        $u="update coches set marca=:m, modelo=md, color=:c where id=:i";
         $stmt=$this->conector->prepare($u);
         try{
             $stmt->execute([
