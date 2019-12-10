@@ -29,6 +29,7 @@ $miPlataforma=$plataforma->getPlataforma($_GET['id']);
 
     function editarPlataforma($n,$i){
         global $plataforma;
+        global $llave;
 
         $plataforma->setId($_GET['id']);
         $plataforma->setNombre($n);
@@ -36,7 +37,7 @@ $miPlataforma=$plataforma->getPlataforma($_GET['id']);
 
         $plataforma->update();
 
-        $llave->null;
+        $llave=null;
 
         $_SESSION['mensaje']='Plataforma editada con éxito';
         header('Location:plataformas.php');
