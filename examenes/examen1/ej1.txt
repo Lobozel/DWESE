@@ -1,0 +1,8 @@
+En ambos casos necesitas un editor de texto o preferiblemente un IDE donde declarar
+todas las sentencias que contendrá tu código, además, para ambos casos hace falta
+un navegador que muestre el resultado de tu trabajo.
+
+Sin embargo, para PHP necesitas también un servidor, por ejemplo Apache, que te permita
+compilar y ejecutar el código que has generado.
+Mientras que para HTML u JavaScript el navegador por si solo se encarga de interpretar
+todo lo que contengan tus archivos.
