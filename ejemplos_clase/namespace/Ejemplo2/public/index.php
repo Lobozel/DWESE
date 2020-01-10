@@ -6,15 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
-    <body>
+    <body class='bg-warning'>
     <?php
     // spl_autoload_register(function($n){
     //     require "../$n.php";
-    // });
-    require "../src/Conexion.php";
-    require "../src/Usuarios.php";
+    // // });
+    // require "../src/Conexion.php";
+    // require "../src/Usuarios.php";
     // use Src\Conexion as Con;
     // use Src\Usuarios as Users;
+    require '../vendor/autoload.php';
     use Src\{Conexion, Usuarios};
     $con=new Conexion();
     $llave = $con->getConector();

@@ -1,0 +1,24 @@
+{
+    "name": "miguel/ejemplo2",
+    "description": "Proyecto para Probar composer y namespaces",
+    "type": "project",
+    "require": {
+        "fzaninotto/faker": "^1.9"
+    },
+    "license": "free",
+    "authors": [
+        {
+            "name": "miguel",
+            "email": "progmiguelangel@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4":{
+            "Src\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}
