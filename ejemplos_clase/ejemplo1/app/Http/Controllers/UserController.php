@@ -20,5 +20,6 @@ class UserController extends Controller{
             'Juanito',
             'Ines'
         ];
+        return view ('vusuarios',compact('usuarios'));
     }
 }
