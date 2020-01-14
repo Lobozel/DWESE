@@ -3,3 +3,4 @@ create table usuarios(
     nombre varchar(80) not null,
     foto varchar(50)
 );
+insert into usuarios(nombre, foto) values('usuario', '../resources/img/user.png');

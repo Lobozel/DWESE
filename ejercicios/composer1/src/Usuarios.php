@@ -11,8 +11,12 @@ class Usuarios{
 
     public function __construct(){
         $n=func_num_args();
-        if($n==1){
+        if($n>=1){
             $this->llave=func_get_arg(0);
+        }
+        if($n==3){
+            $this->nombre=func_get_arg(1);
+            $this->foto=func_get_arg(2);
         }
     }
     //Crud solo haremos el read
@@ -63,7 +67,7 @@ class Usuarios{
             die("Error al borrar el usuario: ".$ex);
         }
     }
-    //getUsuario----------
+    //Getters
     public function getUsuario($id){
         $c="select * from usuarios where id=:i";
         $stmt=$this->llave->prepare($c);
@@ -77,7 +81,19 @@ class Usuarios{
         $usuario=$stmt->fetch(PDO::FETCH_OBJ);
         return $usuario;
     }
-    //---------------------------------------------------------------
-    
+    //Setters
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }
+    public function setFoto($foto)
+    {
+        $this->foto = $foto;
+    }
 
+    
 }

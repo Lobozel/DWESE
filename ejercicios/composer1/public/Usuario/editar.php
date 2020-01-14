@@ -6,12 +6,28 @@ if(!isset($_GET['id'])){
 session_start();
 require "../../src/Conexion.php";
     require "../../src/Usuarios.php";
+    require "../../vendor/autoload.php";
     use Src\Conexion;
     use Src\Usuarios;
     $con=new Conexion();
     $llave = $con->getConector();
     $usu=new Usuarios($llave);
     $miUsuario=$usu->getUsuario($_GET['id']);
+
+    function error($txt){
+        if(gettype($txt)=='array'){
+            $error="<ul>";
+            foreach($txt as $e){
+                $error.="<li>$e</li>";
+            }
+            $error.="</ul>";
+            $_SESSION['error']=$error;
+        }else{
+            $_SESSION['error']=$txt;    
+        }
+        header('Location:crear.php');
+        die();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,9 +42,89 @@ require "../../src/Conexion.php";
 
 <?php
     if(isset($_POST['btnEnviar'])){
-        //Procesamos
-        
 
+        //Procesamos
+        $nom=trim($_POST['nom']);
+        if(strlen($nom)==0){
+            error("El nombre debe contener algún carácter!!!");
+        }
+
+        if(is_uploaded_file($_FILES['imagen']['tmp_name'])){
+        //verificación de Fichero con la Libreria Codegy/Upload
+        $storage = new \Upload\Storage\FileSystem('../../resources/img');
+        $file = new \Upload\File('imagen', $storage);
+
+        //Guardamos el nombre de la imagen que tenia el usuario
+        $oldName=$miUsuario->foto;
+
+        //se le da un id único
+        $fName = uniqid();
+        $file->setName($fName);
+
+        //validación del fichero
+        $file->addValidations(array(
+            //se valida el tipo de fichero
+            new \Upload\Validation\Mimetype(
+                array(
+                'image/jpeg',
+                'image/png',
+                'image/tiff',
+                'image/bmp',
+                'image/gif',
+                'image/x-icon',
+                'image/svg+xml'
+            )),
+            //se valida el peso/tamaño del fichero
+            //(se pueden usar las siguientes medidas: 'B', 'K', 'M' o 'G')
+            new \Upload\Validation\Size('5M')
+        ));
+
+        try {
+            //acceso a la información sobre el fichero subido
+            $data = array(
+                'name'       => $file->getNameWithExtension(),
+                'extension'  => $file->getExtension(),
+                'mime'       => $file->getMimetype(),
+                'size'       => $file->getSize(),
+                'md5'        => $file->getMd5(),
+                'dimensions' => $file->getDimensions()
+            );
+            //dado que el mime nos da una cadena del tipo "image/png"
+            //la cortamos por la '/' para quedarnos solo con la extensión del fichero
+            $mime=explode("/",$data['mime']);
+
+            // Subido con éxito!
+            $file->upload();            
+
+            //creamos el Usuario en la BD
+            $newName="../resources/img/".$fName.".".$mime[1];
+            if($oldName!=$newName){
+                //Ha cambiado la imagen
+                unlink("../".$oldName);
+            }
+            $usu->setId($_GET['id']);
+            $usu->setNombre($nom);
+            $usu->setFoto($newName);
+            $usu->update();
+            $_SESSION['mensaje']="Usuario se ha actualizado exitosamente.";
+            $llave=null;
+            header('Location:../index.php');
+            die();
+        } catch (\Exception $e) {
+            // Se han encontrado errores!
+            $errors = $file->getErrors();
+            error($errors);
+        }
+    }else{
+        $usu->setId($_GET['id']);
+            $usu->setNombre($nom);
+            $usu->setFoto($miUsuario->foto);
+            $usu->update();
+            $_SESSION['mensaje']="Usuario se ha actualizado exitosamente.";
+            $llave=null;
+            header('Location:../index.php');
+            die();
+    }
     }else{
 ?>
 
@@ -41,7 +137,7 @@ require "../../src/Conexion.php";
         unset($_SESSION['error']);
     }
 ?>
-<form name='a' action='<?php echo $_SERVER['PHP_SELF']; ?>' method='POST' enctype='multipart/form-data'>
+<form name='a' action='<?php echo $_SERVER['PHP_SELF']."?id={$_GET['id']}"; ?>' method='POST' enctype='multipart/form-data'>
   <div class="form-group">
     <label for="nom"><b>Nombre:</b></label>
     <input type="text" class="form-control" name="nom" id="nom" value="<?php echo $miUsuario->nombre; ?>">

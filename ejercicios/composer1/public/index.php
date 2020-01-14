@@ -28,6 +28,14 @@ require "../src/Conexion.php";
     </body>
     <h3 class='shadow-lg p-3 bg-white rounded text-center text-info mt-3 text-weight-bold'>Usuarios</h3>
     <div class="container">
+    <?php
+if(isset($_SESSION['mensaje'])){
+  echo "<div>".PHP_EOL;
+  echo "<h4 class='text-center text-primary bg-light'>".$_SESSION['mensaje']."</h4>".PHP_EOL;
+  echo "</div>".PHP_EOL;
+  unset($_SESSION['mensaje']);
+}
+?>
     <a href="Usuario/crear.php" class='btn btn-primary mt-3 mb-3'>Crear Usuario</a>
     <table class="table table-dark">
   <thead>
@@ -56,6 +64,7 @@ require "../src/Conexion.php";
                         </tr>
                     ";
                 }
+                $llave=null;
                 ?>
   </tbody>
 </table>
