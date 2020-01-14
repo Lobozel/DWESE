@@ -7,8 +7,7 @@ session_start();
 require "../../src/Conexion.php";
     require "../../src/Usuarios.php";
     require "../../vendor/autoload.php";
-    use Src\Conexion;
-    use Src\Usuarios;
+    use Src\{Conexion,Usuarios};
     $con=new Conexion();
     $llave = $con->getConector();
     $usu=new Usuarios($llave);
@@ -80,24 +79,11 @@ require "../../src/Conexion.php";
         ));
 
         try {
-            //acceso a la información sobre el fichero subido
-            $data = array(
-                'name'       => $file->getNameWithExtension(),
-                'extension'  => $file->getExtension(),
-                'mime'       => $file->getMimetype(),
-                'size'       => $file->getSize(),
-                'md5'        => $file->getMd5(),
-                'dimensions' => $file->getDimensions()
-            );
-            //dado que el mime nos da una cadena del tipo "image/png"
-            //la cortamos por la '/' para quedarnos solo con la extensión del fichero
-            $mime=explode("/",$data['mime']);
-
             // Subido con éxito!
             $file->upload();            
 
             //creamos el Usuario en la BD
-            $newName="../resources/img/".$fName.".".$mime[1];
+            $newName="../resources/img/".$file->getNameWithExtension();
             if($oldName!=$newName){
                 //Ha cambiado la imagen
                 unlink("../".$oldName);

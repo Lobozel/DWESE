@@ -2,8 +2,7 @@
 session_start();
 require "../src/Conexion.php";
     require "../src/Usuarios.php";
-    use Src\Conexion;
-    use Src\Usuarios;
+    use Src\{Conexion, Usuarios};
 ?>
 <!DOCTYPE html>
 <html lang="es">

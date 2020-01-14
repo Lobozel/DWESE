@@ -6,6 +6,7 @@ if(!isset($_POST['id'])){
 session_start();
 require "../../src/Conexion.php";
     require "../../src/Usuarios.php";
+require "../../vendor/autoload.php";
     use Src\{Conexion,Usuarios};
 $con = new Conexion();
 $llave = $con->getConector();

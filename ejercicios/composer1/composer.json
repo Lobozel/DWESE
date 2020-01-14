@@ -10,5 +10,14 @@
             "name": "miguel",
             "email": "progmiguelangel@gmail.com"
         }
-    ]
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4":{
+            "Src\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
 }
