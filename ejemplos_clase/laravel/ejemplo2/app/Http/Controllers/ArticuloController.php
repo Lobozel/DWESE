@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Libro;
+use App\Articulo;
 use Illuminate\Http\Request;
 
-class LibroController extends Controller
+class ArticuloController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +16,7 @@ class LibroController extends Controller
     {
         //
     }
-    //Metdodo creado por mi
-    public function mostrarTodos(){
-        $libros=Libro::all();
-        return view('libros.listado', compact('libros'));
-    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -45,10 +41,10 @@ class LibroController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Libro  $libro
+     * @param  \App\Articulo  $articulo
      * @return \Illuminate\Http\Response
      */
-    public function show(Libro $libro)
+    public function show(Articulo $articulo)
     {
         //
     }
@@ -56,10 +52,10 @@ class LibroController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Libro  $libro
+     * @param  \App\Articulo  $articulo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Libro $libro)
+    public function edit(Articulo $articulo)
     {
         //
     }
@@ -68,10 +64,10 @@ class LibroController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Libro  $libro
+     * @param  \App\Articulo  $articulo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Libro $libro)
+    public function update(Request $request, Articulo $articulo)
     {
         //
     }
@@ -79,10 +75,10 @@ class LibroController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Libro  $libro
+     * @param  \App\Articulo  $articulo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Libro $libro)
+    public function destroy(Articulo $articulo)
     {
         //
     }
