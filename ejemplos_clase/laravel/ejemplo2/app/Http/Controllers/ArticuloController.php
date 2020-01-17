@@ -16,6 +16,11 @@ class ArticuloController extends Controller
     {
         //
     }
+    //Metdodo creado por mi
+    public function mostrarTodos(){
+        $articulos=Articulo::all();
+        return view('articulos.listado', compact('articulos'));
+    }
 
     /**
      * Show the form for creating a new resource.

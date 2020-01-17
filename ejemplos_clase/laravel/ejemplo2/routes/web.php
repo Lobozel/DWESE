@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 Route::get("libros/listado", "LibroController@mostrarTodos")->name("libros.listado");
 Route::resource("libros", "LibroController");
+Route::get("articulos/listado", "ArticuloController@mostrarTodos")->name("articulos.listado");
+Route::resource("articulos", "ArticuloController");
