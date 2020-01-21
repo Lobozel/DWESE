@@ -6,6 +6,12 @@
     LIBROS DISPONIBLES
 @endsection
 @section('contenido')
+@if(Session::has('mensaje'))
+<div class='container mt-3 mb-3 alert-success'>
+  {{session('mensaje')}}
+</div>
+@endif
+<a href="{{route('libros.create')}}" class='btn btn-success mt-2 mb-2 normal'>Nuevo Libro</a>
 <table class="table table-dark normal">
     <thead>
       <tr>
@@ -27,9 +33,15 @@
             <td>{{$item->pvp}}</td>
             <td>{{$item->isbn}}</td>
             <td>{{$item->stock}}</td>
-            <td></td>
+            <td>
+              <form name="borrar" action="{{route('libros.destroy',$item)}}" method='POST'>
+                @csrf
+                 @method('DELETE')
+                <input type="submit" value="Borrar" class='btn btn-danger normal'>
+            </td>
           </tr>
         @endforeach
     </tbody>
   </table>
+  {{$libros->links()}}
 @endsection

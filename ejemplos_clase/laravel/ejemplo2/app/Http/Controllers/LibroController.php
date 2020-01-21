@@ -18,7 +18,8 @@ class LibroController extends Controller
     }
     //Metdodo creado por mi
     public function mostrarTodos(){
-        $libros=Libro::all();
+        // $libros=Libro::all();
+        $libros=Libro::paginate(5);
         return view('libros.listado', compact('libros'));
     }
     /**
@@ -28,7 +29,7 @@ class LibroController extends Controller
      */
     public function create()
     {
-        //
+        return view('libros.create');
     }
 
     /**
@@ -39,7 +40,16 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'titulo'=>'required',
+            'sinopsis'=>'required',
+            'pvp'=>'required',
+            'isbn'=>'required'
+        ]);
+        //Os dejo abierto como controlar si no paso el validate
+        Libro::create($request->all());
+        Session::flash('mensaje','Libro creado Correctamente.');
+        return redirect()->route('libros.listado');
     }
 
     /**
@@ -84,6 +94,9 @@ class LibroController extends Controller
      */
     public function destroy(Libro $libro)
     {
-        //
+        $libro->delete();
+        //Pasamos un mensaje diciendo que hemos borrado el libro
+        Session::flash('mensaje','Libro Borrado Correctamente.');
+        return redirect()->route('libros.listado');
     }
 }
