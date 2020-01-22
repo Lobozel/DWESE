@@ -34,9 +34,10 @@
             <td>{{$item->isbn}}</td>
             <td>{{$item->stock}}</td>
             <td>
-              <form name="borrar" action="{{route('libros.destroy',$item)}}" method='POST'>
+              <form name="borrar" action="{{route('libros.destroy',$item)}}" method='POST' style='white-space:nowrap;'>
                 @csrf
                  @method('DELETE')
+              <a href="{{route('libros.edit',$item)}}" class='btn btn-warning normal'>Edit</a>
                 <input type="submit" value="Borrar" class='btn btn-danger normal'>
             </td>
           </tr>

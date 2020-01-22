@@ -45,7 +45,8 @@ class LibroController extends Controller
             'titulo'=>'required',
             'sinopsis'=>'required',
             'pvp'=>'required',
-            'isbn'=>'required'
+            'isbn'=>'required|unique:libros,isbn|isbn'
+            //'isbn'=>['required'.'unique:libros', 'isbn']
         ]);
         //Os dejo abierto como controlar si no paso el validate
         Libro::create($request->all());
@@ -72,7 +73,7 @@ class LibroController extends Controller
      */
     public function edit(Libro $libro)
     {
-        //
+        return view('libros.edit', compact('libro'));
     }
 
     /**
@@ -84,7 +85,19 @@ class LibroController extends Controller
      */
     public function update(Request $request, Libro $libro)
     {
-        //
+        $request->validate([
+            'titulo'=>'required',
+            'sinopsis'=>'required',
+            'pvp'=>'required|min:0',
+            // 'isbn'=>'required|unique:libros,isbn,|isbn'
+            'isbn'=>['required','unique:libros,isbn,'.$libro->id,'isbn']
+            /*unique:libros,isbn,'.$libro->id =>
+            campo único para la tabla libros para el campo isbn excepto en el caso de el mismo ($libro->id)
+            */
+        ]);
+        $libro->update($request->all());
+        Session::flash('mensaje','Libro actualizado correctamente.');
+        return redirect()->route('libros.listado');
     }
 
     /**
