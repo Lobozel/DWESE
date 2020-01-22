@@ -18,6 +18,7 @@
     @endif
 </div>
 <form name="crear" action="{{route('libros.store')}}" method="POST">
+  @csrf
     <div class="row">
       <div class="col">
         <input type="text" class="form-control" placeholder="Título" name='titulo' required>

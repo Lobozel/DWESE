@@ -8,7 +8,7 @@
 @section('contenido')
 @if(Session::has('mensaje'))
 <div class='container mt-3 mb-3 alert-success'>
-  {{session('mensaje')}}
+  {{Session::get('mensaje')}}
 </div>
 @endif
 <a href="{{route('libros.create')}}" class='btn btn-success mt-2 mb-2 normal'>Nuevo Libro</a>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Libro;
 use Illuminate\Http\Request;
+use Session;
 
 class LibroController extends Controller
 {
