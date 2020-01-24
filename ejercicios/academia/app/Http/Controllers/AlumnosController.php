@@ -85,17 +85,17 @@ class AlumnosController extends Controller
      * @param  \App\Alumnos  $alumnos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Alumnos $alumnos)
+    public function update(Request $request, Alumnos $alumno)
     {
         //Valida
         $request->validate([
             'nombre' => 'required',
             'apellidos'=> 'required',
-            'email' => 'required|unique:alumnos',
+            'email' => ['required','unique:alumnos,email,'.$request->id],
             'direccion' => 'required'
         ]);
         //Actualiza
-        Alumnos::update($request->all());
+        $alumno->update($request->all());
         //Guarda mensaje en session
         Session::flash('mensaje','Alumno Modificado Correctamente.');
         //Vuelve a la lista de alumnos
