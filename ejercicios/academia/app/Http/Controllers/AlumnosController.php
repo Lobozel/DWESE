@@ -30,7 +30,7 @@ class AlumnosController extends Controller
      */
     public function create()
     {
-        //
+        return view('alumnos.create');
     }
 
     /**
@@ -41,7 +41,19 @@ class AlumnosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Valida
+        $request->validate([
+            'nombre' => 'required',
+            'apellidos'=> 'required',
+            'email' => 'required|unique:alumnos',
+            'direccion' => 'required'
+        ]);
+        //Crea
+        Alumnos::create($request->all());
+        //Guarda mensaje en session
+        Session::flash('mensaje','Alumno dado de Alta Correctamente.');
+        //Vuelve a la lista de alumnos
+        return redirect()->route('alumnos.listado');
     }
 
     /**
@@ -61,9 +73,9 @@ class AlumnosController extends Controller
      * @param  \App\Alumnos  $alumnos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Alumnos $alumnos)
+    public function edit(Alumnos $alumno)
     {
-        //
+        return view('alumnos.edit', compact('alumno'));
     }
 
     /**
@@ -75,7 +87,19 @@ class AlumnosController extends Controller
      */
     public function update(Request $request, Alumnos $alumnos)
     {
-        //
+        //Valida
+        $request->validate([
+            'nombre' => 'required',
+            'apellidos'=> 'required',
+            'email' => 'required|unique:alumnos',
+            'direccion' => 'required'
+        ]);
+        //Actualiza
+        Alumnos::update($request->all());
+        //Guarda mensaje en session
+        Session::flash('mensaje','Alumno Modificado Correctamente.');
+        //Vuelve a la lista de alumnos
+        return redirect()->route('alumnos.listado');
     }
 
     /**

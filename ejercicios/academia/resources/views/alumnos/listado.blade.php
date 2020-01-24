@@ -16,6 +16,8 @@
   {{Session::get('mensaje')}}
 </div>
 @endif
+{{--Botón que nos lleva a la vista para crear alumno--}}
+<a href="{{route('alumnos.create')}}" class='btn btn-success mt-2 mb-2 normal'>Nuevo Alumno</a>
 {{--Tabla que mostrará la información del alumno--}}
 <table class="table table-dark normal">
     <thead>
@@ -45,6 +47,8 @@
               <form name="borrar" action="{{route('alumnos.destroy',$alumno)}}" method='POST' style='white-space:nowrap;'>
                 @csrf
                  @method('DELETE')
+                 {{--Botón que nos lleva a la vista para editar alumno--}}
+                 <a href="{{route('alumnos.edit',$alumno)}}" class='btn btn-warning normal'>Edit</a>
                 <input type="submit" value="Borrar" class='btn btn-danger normal'>
               </form>
             </td>
