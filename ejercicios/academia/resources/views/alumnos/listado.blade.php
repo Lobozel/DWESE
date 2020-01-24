@@ -46,6 +46,7 @@
                 @csrf
                  @method('DELETE')
                 <input type="submit" value="Borrar" class='btn btn-danger normal'>
+              </form>
             </td>
           </tr>
         @endforeach

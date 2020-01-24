@@ -84,9 +84,9 @@ class AlumnosController extends Controller
      * @param  \App\Alumnos  $alumnos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Alumnos $alumnos)
+    public function destroy(Alumnos $alumno)
     {
-        $alumnos->delete();
+        $alumno->delete();
         Session::flash('mensaje','Alumno Borrado Correctamente.');
         return redirect()->route('alumnos.listado');
     }
