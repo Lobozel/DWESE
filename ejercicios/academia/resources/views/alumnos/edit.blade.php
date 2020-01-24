@@ -24,8 +24,9 @@
 </div>
 {{--Formulario donde modificaremos los datos del Alumno--}}
 {{--en el action la ruta es alumnos.update que es quien se encargará del proceso de actualizar el alumno--}}
-<form name="editar" action="{{route('alumnos.update')}}" method="POST">
+<form name="editar" action="{{route('alumnos.update',$alumno)}}" method="POST">
   @csrf {{--Token obligatorio en formularios por seguridad--}}
+  @method('PUT')
     <div class="row">
       <div class="col">
         <input type="text" class="form-control" value="{{$alumno->nombre}}" name='nombre' required>
@@ -42,6 +43,7 @@
       <div class="col">
         <input type="text" class="form-control" value="{{$alumno->telefono}}" name='telefono'>
       </div>
+    <input type='hidden' name='id' value='{{$alumno->id}}'>
     </div>
     <div class='row mt-3'>
         <div class='col'>

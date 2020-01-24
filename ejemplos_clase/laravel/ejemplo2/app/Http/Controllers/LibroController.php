@@ -13,9 +13,16 @@ class LibroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        // $libros=Libro::orderBy('id')->paginate(5);
+        $titulo=$request->get('titulo');
+        $sinopsis=$request->get('sinopsis');
+        $libros=Libro::orderBy('id')
+        ->titulo($titulo)
+        ->sinopsis($sinopsis)
+        ->paginate(5);
+        return view('libros.search',compact('libros'));
     }
     //Metdodo creado por mi
     public function mostrarTodos(){
