@@ -18,11 +18,13 @@ class LibroController extends Controller
         // $libros=Libro::orderBy('id')->paginate(5);
         $titulo=$request->get('titulo');
         $sinopsis=$request->get('sinopsis');
+        $precio = $request->get('precio');
         $libros=Libro::orderBy('id')
         ->titulo($titulo)
         ->sinopsis($sinopsis)
+        ->pvp($precio)
         ->paginate(5);
-        return view('libros.search',compact('libros'));
+        return view('libros.search',compact('libros',"request"));
     }
     //Metdodo creado por mi
     public function mostrarTodos(){

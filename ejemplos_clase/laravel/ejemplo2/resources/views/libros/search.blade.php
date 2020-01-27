@@ -19,6 +19,14 @@
         <div class='form-group ml-2'>
             <input type='submit' value='Buscar' class='btn btn-info'>
         </div>
+        <div class="form-group mr-2">
+            <select name="precio">
+                <option value="">----</option>
+                <option value="1">menor a 20</option>
+                <option value="2">de 20 a 50</option>
+                <option value="3">Mayor que 50</option>
+            </select>
+        </div>
     </form>
 </div>
 </div>
@@ -46,5 +54,5 @@
         @endforeach
     </tbody>
   </table>
-  {{$libros->links()}}
+  {{$libros->appends(Request::only(["titulo","sinopsis"]))->links()}}
 @endsection
