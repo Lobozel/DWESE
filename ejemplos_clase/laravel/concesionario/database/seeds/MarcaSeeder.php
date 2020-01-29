@@ -17,10 +17,12 @@ class MarcaSeeder extends Seeder
         //     'pais'=>'España'
         // ]);
         //Vaciamos las tablas
+        //desactivamos la comprobación de llaves foráneas
         DB::statement("SET FOREIGN_KEY_CHECKS=0;");
         DB::table('marcas')->truncate();
+        //reactivamos la comprobación de llaves foráneas
         DB::statement("SET FOREIGN_KEY_CHECKS=1;");
-        
+
 
         Marca::create([
                 'nombre'=>'Seat',
