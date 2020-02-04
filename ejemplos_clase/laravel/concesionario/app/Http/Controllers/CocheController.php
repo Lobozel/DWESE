@@ -72,7 +72,7 @@ class CocheController extends Controller
      * @param  \App\Coche  $coche
      * @return \Illuminate\Http\Response
      */
-    public function show(Coche $coche)
+    public function show(Coche $coch)
     {
         //
     }
@@ -83,7 +83,7 @@ class CocheController extends Controller
      * @param  \App\Coche  $coche
      * @return \Illuminate\Http\Response
      */
-    public function edit(Coche $coches)
+    public function edit(Coche $coch)
     {
         //
     }
@@ -95,7 +95,7 @@ class CocheController extends Controller
      * @param  \App\Coche  $coche
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Coche $coche)
+    public function update(Request $request, Coche $coch)
     {
         //
     }
@@ -106,7 +106,7 @@ class CocheController extends Controller
      * @param  \App\Coche  $coche
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Coche $coche)
+    public function destroy(Coche $coch)
     {
         //
     }
