@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Coche;
 use App\Marca;
 use Illuminate\Http\Request;
-use App\Rules\MAtricula;
+use App\Rules\Matricula;
 use Illuminate\Support\Facades\Storage;
 
 class CocheController extends Controller
@@ -74,7 +74,7 @@ class CocheController extends Controller
      */
     public function show(Coche $coch)
     {
-        //
+        return view('coches.show',compact('coch'));
     }
 
     /**
@@ -85,7 +85,9 @@ class CocheController extends Controller
      */
     public function edit(Coche $coch)
     {
-        //
+        $marcas=Marca::orderBy('nombre')->get();
+        $tipos=['Diesel','Gasolina','Hibrido','Eléctrico','Gas (GNC/GLC)'];
+        return view('coches.edit',compact('coch','marcas','tipos'));
     }
 
     /**
@@ -108,6 +110,15 @@ class CocheController extends Controller
      */
     public function destroy(Coche $coch)
     {
-        //
+        //Dos cosas borrar la imagen si no es default.jpg
+        //y borrar registro
+        $foto=$coch->foto;
+        if(basename($foto)!='default.jpg'){
+            //la borro NO es default.jpg
+            unlink($foto);
+        }
+        //en cualquier caso borro el registro
+        $coch->delete();
+        return redirect()->route('coches.index')->with('mensaje','Coche Eliminado');
     }
 }

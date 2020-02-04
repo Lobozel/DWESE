@@ -25,21 +25,28 @@ Coches Disponibles
       </tr>
     </thead>
     <tbody>
-        @foreach($coches as $coche)
+        @foreach($coches as $coch)
       <tr>
         <th scope="row" class="align-middle">
-        <a href="{{route('coches.show', $coche)}}" class="btn btn-info">Detalles</a>
+        <a href="{{route('coches.show', $coch)}}" class="btn btn-info">Detalles</a>
         </th>
-    <td class="align-middle">{{$coche->matricula}}</td>
-    <td class="align-middle">{{$coche->marca->nombre}}</td>
-    <td class="align-middle">{{$coche->modelo}}</td>
-    <td class="align-middle">{{$coche->tipo}}</td>
+    <td class="align-middle">{{$coch->matricula}}</td>
+    <td class="align-middle">{{$coch->marca->nombre}}</td>
+    <td class="align-middle">{{$coch->modelo}}</td>
+    <td class="align-middle">{{$coch->tipo}}</td>
 
-    <td class="align-middle">{{$coche->klms}}</td>
+    <td class="align-middle">{{$coch->klms}}</td>
     <td>
-        <img src="{{asset($coche->foto)}}" width="90px" height='90px' class="rounded-circle">
+        <img src="{{asset($coch->foto)}}" width="90px" height='90px' class="rounded-circle">
         </td>
-    <td class="align-middle">Botones</td>
+    <td class="align-middle">
+    <form name="borrar" method='post' action='{{route('coches.destroy', $coch)}}'>
+    @csrf
+    @method('DELETE')
+    <a href='{{route('coches.edit', $coch)}}' class='btn btn-warning'>Editar</a>
+    <button type='submit' class='btn btn-danger' onclick="return confirm('¿Borrar COCHE?')">Borrar</button>
+  </form>
+  </td>
       </tr>
      @endforeach
     </tbody>

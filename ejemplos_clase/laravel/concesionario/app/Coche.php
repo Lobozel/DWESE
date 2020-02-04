@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Marca;
+use App\Marca;
 
 class Coche extends Model
 {

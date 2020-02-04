@@ -55,7 +55,6 @@ return [
             //'url' => env('APP_URL').'/storage',
             'url' => env('APP_URL').'/img',
             'visibility' => 'public',
-            'visibility' => 'public',
         ],
 
         's3' => [

@@ -4,5 +4,5 @@ class Conexion{
     private $pass;
     private $bd;
     private $host;
-    private $dsn
+    private $dsn;
 }
