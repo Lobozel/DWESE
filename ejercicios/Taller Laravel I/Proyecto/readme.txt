@@ -1,1 +1,0 @@
-Para ligerar el peso de la práctica se ha borrado la carpeta vendor
