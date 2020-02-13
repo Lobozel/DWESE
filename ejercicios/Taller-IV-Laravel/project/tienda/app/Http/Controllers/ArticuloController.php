@@ -69,7 +69,7 @@ class ArticuloController extends Controller
             //Guardo el articulo pero la imagen estaria mal
             $articulo=Articulo::create($request->all());
             //actualiza el registro imagen del articulo guardado
-            $articulo->update(['imagen'=>"img/$nombre"]);
+            $articulo->update(['imagen'=>"/img/$nombre"]);
         }
         else{
             Articulo::create($request->all());
@@ -131,7 +131,7 @@ class ArticuloController extends Controller
             }
             //ahora actualizo el articulo
             $articulo->update($request->all());
-            $articulo->update(['imagen'=>"img/$nombre"]);
+            $articulo->update(['imagen'=>"/img/$nombre"]);
         }
         else{
             $articulo->update($request->all());
@@ -152,7 +152,7 @@ class ArticuloController extends Controller
         $imagen=$articulo->imagen;
         if(basename($imagen)!='default.png'){
             //la borro NO es default.png
-            unlink($imagen);
+            unlink(public_path().$imagen);
         }
         //en cualquier caso borro el registro
         $articulo->delete();

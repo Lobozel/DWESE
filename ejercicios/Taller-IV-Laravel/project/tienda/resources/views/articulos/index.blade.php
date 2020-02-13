@@ -13,7 +13,7 @@ Artículos Disponibles
 <a href="{{route('articulos.create')}}" class="btn btn-success mb-3">Guardar Artículo</a>
 <form name="search" method="get" action="{{route('articulos.index')}}" class="form-inline float-right">
   <i class="fa fa-search fa-2x ml-2 mr-2" aria-hidden="true"></i>
-  <select name='categoria' class='form-control mr-2' onchange="this.form.submit()">
+  <select name='categoria' class='form-control mr-2' >
     <option value='%'>Todos</option>
     @foreach($categorias as $categoria)
       @if($categoria==$request->categoria)
@@ -23,8 +23,8 @@ Artículos Disponibles
       @endif
     @endforeach
   </select>
- <select name="precio" class="form-control" onchange="this.form.submit()">
-  <option value='%'>Todos</option>
+ <select name="precio" class="form-control" >
+  <option value='0'>Todos</option>
   <?php $cont=1; ?>
   @foreach ($precios as $precio)
   @if($cont==$request->precio)
