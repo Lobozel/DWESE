@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Marca;
+use Illuminate\Support\Facades\DB;
 
 class MarcaSeeder extends Seeder
 {
