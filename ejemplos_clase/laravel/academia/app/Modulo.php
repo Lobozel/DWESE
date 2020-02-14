@@ -8,7 +8,7 @@ class Modulo extends Model
 {
     protected $fillable=["nombre", "horas"];
 
-    //Métodos para la relación con Alumnos
+    //Métodos para la relación n:m con Alumnos
 
     public function alumnos(){
         return $this->belongsToMany("App\Alumno")->withPivot("nota")->withTimestamps();
