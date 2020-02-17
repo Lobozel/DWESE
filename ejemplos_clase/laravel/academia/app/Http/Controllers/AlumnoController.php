@@ -127,7 +127,7 @@ class AlumnoController extends Controller
      */
     public function edit(Alumno $alumno)
     {
-        //
+        return view('alumnos.edit',compact('alumno'));
     }
 
     /**
@@ -139,7 +139,35 @@ class AlumnoController extends Controller
      */
     public function update(Request $request, Alumno $alumno)
     {
-        //
+        //validaciones genericas
+        $request->validate([
+            'nombre'=>['required'],            
+            'apellidos'=>['required'],            
+            'mail'=>['required', 'unique:alumnos,mail,'.$alumno->id]    
+        ]);
+        $alumno->nombre=ucwords($request->nombre);
+        $alumno->apellidos=ucwords($request->apellidos);
+        $alumno->mail=$request->mail;
+        //comprobamos si hemos subido un logo
+        if($request->has('logo')){
+            $request->validate([
+                'logo'=>['image']
+            ]);
+            $file=$request->file('logo');
+            $nom='logo/'.time().'_'.$file->getClientOriginalName();
+            //Guardamos el fichero en public
+            Storage::disk('public')->put($nom, \File::get($file));
+            //si no es la imagen default.jpg borro la imagen antigua
+            $imagenOld=$alumno->logo;
+            if(basename($imagenOld)!='default.jpg'){
+                unlink($imagenOld);
+            }
+            $alumno->logo="img/$nom";            
+        }
+        //actualizamos el alumno
+        $alumno->update();
+
+        return redirect()->route('alumnos.index')->with("mensaje","Alumno Modificado");
     }
 
     /**
@@ -150,6 +178,12 @@ class AlumnoController extends Controller
      */
     public function destroy(Alumno $alumno)
     {
-        //
+        //tener cuidado de borrar las imágenes salvo default.jpg
+        $logo=$alumno->logo;
+        if(basename($logo)!="default.jpg"){ //basename quita la url y se queda solo con el nombre
+            unlink($logo);
+        }
+        $alumno->delete();
+        return redirect()->route('alumnos.index')->with('mensaje','Alumno Borrado.');
     }
 }

@@ -27,6 +27,14 @@ Detalle Alumno
                 @endforeach
             </ul>
         </p>
+        <p class="card-text">
+            <b>Nota Media:</b>
+            @if ($alumno->notaMedia()!='Sin Nota' && $alumno->notaMedia()<5)
+                <span class='text-dark bg-danger'>{{$alumno->notaMedia()}}</span>
+            @else
+                <span class='text-dark bg-success'>{{$alumno->notaMedia()}}</span>
+            @endif
+        </p>
         </p>
         <a href="{{route('alumnos.index')}}" class="float-right btn btn-success mt-3">Volver</a>
         <a href="{{route('alumnos.fmatricula', $alumno)}}" class="float-right btn btn-warning mr-2 mt-3" >Matricular Alumno</a>
