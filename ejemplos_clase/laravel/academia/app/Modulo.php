@@ -13,4 +13,7 @@ class Modulo extends Model
     public function alumnos(){
         return $this->belongsToMany("App\Alumno")->withPivot("nota")->withTimestamps();
     }
+    public function scopeNombre($query, $v){
+        return $query->where("nombre", "like", "%$v%");
+    }
 }

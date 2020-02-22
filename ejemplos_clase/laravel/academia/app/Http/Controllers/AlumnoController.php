@@ -14,10 +14,14 @@ class AlumnoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {   
-        $alumnos = Alumno::orderBy("apellidos")->paginate(4);
-        return view("alumnos.index", compact("alumnos"));
+        $modulos = Modulo::all();
+        $alumnos = Alumno::orderBy("apellidos")
+        ->modulo($request->modulos)
+        ->paginate(4);
+        return view("alumnos.index",
+        compact("alumnos","modulos","request"));
     }
 
     /**
@@ -36,36 +40,29 @@ class AlumnoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AlumnoRequest $request)
     {
-        //validaciones genericas
-        $request->validate([
-            'nombre'=>['required'],            
-            'apellidos'=>['required'],            
-            'mail'=>['required', 'unique:alumnos,mail']    
-        ]);
-        //cojo los datos por que voy a modificar el request
-        //voy a poner nom y ape la primera letra en mayúsculas
-        $alumno=new Alumno();
-        $alumno->nombre=ucwords($request->nombre);
-        $alumno->apellidos=ucwords($request->apellidos);
-        $alumno->mail=$request->mail;
-        //comprobamos si hemos subido un logo
-        if($request->has('logo')){
-            $request->validate([
-                'logo'=>['image']
-            ]);
-            $file=$request->file('logo');
-            $nom='logo/'.time().'_'.$file->getClientOriginalName();
-            //Guardamos el fichero en public
-            Storage::disk('public')->put($nom, \File::get($file));
-            //le damos a alumno en nombre que le hemos puesto al fichero
-            $alumno->logo="img/$nom";            
-        }
-        //guardamos el alumno
-        $alumno->save();
+        $datos=$request->validated();
 
-        return redirect()->route('alumnos.index')->with("mensaje","Alumno Guardado");
+        //cojo los datos porque voy a modificar el request voy a poner nom y ape la primera letra en mayusculas
+        $alumno = new Alumno;
+        $alumno->nombre = $datos['nombre'];
+        $alumno->apellidos = ucwords(($datos['apellidos']));
+        $alumno->mail = $datos['mail'];
+
+        //comprobamos si hemos subido un logo
+        if (isset($datos['logo'])) {
+
+            $file = $datos['logo'];
+            $nom = 'logo/' . time() . '_' . $file->getClientOriginalName();
+            Storage::disk('public')->put($nom, \File::get($file));
+            $alumno->logo = "img/$nom";
+
+        }
+        $alumno->save();
+        return redirect()
+        ->route('alumnos.index')
+        ->with('mensaje', 'Alumno creado');
     }
 
     /**

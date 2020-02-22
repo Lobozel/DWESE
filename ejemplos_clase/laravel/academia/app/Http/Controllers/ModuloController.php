@@ -12,9 +12,14 @@ class ModuloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $modulos = Modulo::orderBy("nombre")
+        ->nombre($request->nombre)
+        ->paginate(3);
+
+        return view("modulos.index",
+        compact("modulos","request"));
     }
 
     /**
@@ -24,7 +29,7 @@ class ModuloController extends Controller
      */
     public function create()
     {
-        //
+        return view("modulos.create");
     }
 
     /**
@@ -35,7 +40,15 @@ class ModuloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "nombre"=>["required"],
+            "horas"=>["required"]
+        ]);
+        Modulo::create($request->all());
+
+        return redirect()
+        ->route("modulos.index")
+        ->with("mensaje", "Modulo Guardado");
     }
 
     /**
@@ -46,7 +59,7 @@ class ModuloController extends Controller
      */
     public function show(Modulo $modulo)
     {
-        //
+        return view("modulos.detalle", compact("modulo"));
     }
 
     /**
@@ -57,7 +70,7 @@ class ModuloController extends Controller
      */
     public function edit(Modulo $modulo)
     {
-        //
+        return view("modulos.edit", compact("modulo"));
     }
 
     /**
@@ -69,7 +82,15 @@ class ModuloController extends Controller
      */
     public function update(Request $request, Modulo $modulo)
     {
-        //
+        $request->validate([
+            "nombre"=>["required", "unique:modulos,nombre,".$modulo->id],
+            "horas"=>["required"]
+        ]);
+        $modulo->update($request->all());
+
+        return redirect()
+        ->route("modulos.index")
+        ->with("mensaje", "Modulo Actualizado");
     }
 
     /**
@@ -80,6 +101,9 @@ class ModuloController extends Controller
      */
     public function destroy(Modulo $modulo)
     {
-        //
+        $modulo->delete();
+        return redirect()
+        ->route("modulos.index")
+        ->with("mensaje", "Modulo Borrado.");
     }
 }
